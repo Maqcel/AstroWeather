@@ -16,16 +16,20 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   WeatherCubit(this._weatherRepository) : super(WeatherState.init(name: ''));
 
+  void call() {
+    _weatherRepository.requestCurrentForecast(name: 'Łódź');
+  }
+
   Future<bool> _checkConnection() async {
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        return true;
-      }
-    } on SocketException catch (_) {
-      return false;
-    }
-    return false;
+    // try {
+    //   final result = await InternetAddress.lookup('google.com');
+    //   if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+    //     return true;
+    //   }
+    // } on SocketException catch (_) {
+    //   return false;
+    // }
+    return true;
   }
 
   Future<void> startFetching() async {

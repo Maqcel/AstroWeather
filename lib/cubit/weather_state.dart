@@ -1,7 +1,7 @@
 part of 'weather_cubit.dart';
 
 @freezed
-abstract class WeatherState with _$WeatherState {
+class WeatherState with _$WeatherState {
   const factory WeatherState({
     required String name,
     required bool isLoading,

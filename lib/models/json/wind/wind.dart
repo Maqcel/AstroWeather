@@ -8,6 +8,7 @@ class Wind with _$Wind {
   factory Wind({
     required final double speed,
     required final int deg,
+    required final double gust,
   }) = _Wind;
 
   const Wind._();

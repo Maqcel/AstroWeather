@@ -20,10 +20,11 @@ Wind _$WindFromJson(Map<String, dynamic> json) {
 class _$WindTearOff {
   const _$WindTearOff();
 
-  _Wind call({required double speed, required int deg}) {
+  _Wind call({required double speed, required int deg, required double gust}) {
     return _Wind(
       speed: speed,
       deg: deg,
+      gust: gust,
     );
   }
 
@@ -39,6 +40,7 @@ const $Wind = _$WindTearOff();
 mixin _$Wind {
   double get speed => throw _privateConstructorUsedError;
   int get deg => throw _privateConstructorUsedError;
+  double get gust => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,7 @@ mixin _$Wind {
 abstract class $WindCopyWith<$Res> {
   factory $WindCopyWith(Wind value, $Res Function(Wind) then) =
       _$WindCopyWithImpl<$Res>;
-  $Res call({double speed, int deg});
+  $Res call({double speed, int deg, double gust});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$WindCopyWithImpl<$Res> implements $WindCopyWith<$Res> {
   $Res call({
     Object? speed = freezed,
     Object? deg = freezed,
+    Object? gust = freezed,
   }) {
     return _then(_value.copyWith(
       speed: speed == freezed
@@ -74,6 +77,10 @@ class _$WindCopyWithImpl<$Res> implements $WindCopyWith<$Res> {
           ? _value.deg
           : deg // ignore: cast_nullable_to_non_nullable
               as int,
+      gust: gust == freezed
+          ? _value.gust
+          : gust // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -83,7 +90,7 @@ abstract class _$WindCopyWith<$Res> implements $WindCopyWith<$Res> {
   factory _$WindCopyWith(_Wind value, $Res Function(_Wind) then) =
       __$WindCopyWithImpl<$Res>;
   @override
-  $Res call({double speed, int deg});
+  $Res call({double speed, int deg, double gust});
 }
 
 /// @nodoc
@@ -99,6 +106,7 @@ class __$WindCopyWithImpl<$Res> extends _$WindCopyWithImpl<$Res>
   $Res call({
     Object? speed = freezed,
     Object? deg = freezed,
+    Object? gust = freezed,
   }) {
     return _then(_Wind(
       speed: speed == freezed
@@ -109,6 +117,10 @@ class __$WindCopyWithImpl<$Res> extends _$WindCopyWithImpl<$Res>
           ? _value.deg
           : deg // ignore: cast_nullable_to_non_nullable
               as int,
+      gust: gust == freezed
+          ? _value.gust
+          : gust // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -116,7 +128,8 @@ class __$WindCopyWithImpl<$Res> extends _$WindCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Wind extends _Wind {
-  _$_Wind({required this.speed, required this.deg}) : super._();
+  _$_Wind({required this.speed, required this.deg, required this.gust})
+      : super._();
 
   factory _$_Wind.fromJson(Map<String, dynamic> json) =>
       _$_$_WindFromJson(json);
@@ -125,10 +138,12 @@ class _$_Wind extends _Wind {
   final double speed;
   @override
   final int deg;
+  @override
+  final double gust;
 
   @override
   String toString() {
-    return 'Wind(speed: $speed, deg: $deg)';
+    return 'Wind(speed: $speed, deg: $deg, gust: $gust)';
   }
 
   @override
@@ -138,14 +153,17 @@ class _$_Wind extends _Wind {
             (identical(other.speed, speed) ||
                 const DeepCollectionEquality().equals(other.speed, speed)) &&
             (identical(other.deg, deg) ||
-                const DeepCollectionEquality().equals(other.deg, deg)));
+                const DeepCollectionEquality().equals(other.deg, deg)) &&
+            (identical(other.gust, gust) ||
+                const DeepCollectionEquality().equals(other.gust, gust)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(speed) ^
-      const DeepCollectionEquality().hash(deg);
+      const DeepCollectionEquality().hash(deg) ^
+      const DeepCollectionEquality().hash(gust);
 
   @JsonKey(ignore: true)
   @override
@@ -159,7 +177,10 @@ class _$_Wind extends _Wind {
 }
 
 abstract class _Wind extends Wind {
-  factory _Wind({required double speed, required int deg}) = _$_Wind;
+  factory _Wind(
+      {required double speed,
+      required int deg,
+      required double gust}) = _$_Wind;
   _Wind._() : super._();
 
   factory _Wind.fromJson(Map<String, dynamic> json) = _$_Wind.fromJson;
@@ -168,6 +189,8 @@ abstract class _Wind extends Wind {
   double get speed => throw _privateConstructorUsedError;
   @override
   int get deg => throw _privateConstructorUsedError;
+  @override
+  double get gust => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$WindCopyWith<_Wind> get copyWith => throw _privateConstructorUsedError;
