@@ -1,6 +1,8 @@
 import 'package:astro_weather_2/constants.dart';
+import 'package:astro_weather_2/screens/main_screen/components/additional_info.dart';
 import 'package:astro_weather_2/screens/main_screen/components/clock_widget.dart';
 import 'package:astro_weather_2/screens/main_screen/components/fragment.dart';
+import 'package:astro_weather_2/screens/main_screen/components/general_info.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -38,18 +40,26 @@ class _MainScreenState extends State<MainScreen> {
                     controller: controller,
                     scrollDirection: Axis.horizontal,
                     children: [
-                      Fragment(image: Image.asset('assets/sun.png')),
-                      Fragment(image: Image.asset('assets/moon.png')),
+                      Fragment(
+                        child: GeneralInfo(),
+                      ),
+                      Fragment(
+                        child: AdditionalInfo(),
+                      ),
                     ],
                   );
                 }
                 return Row(
                   children: [
                     Expanded(
-                      child: Fragment(image: Image.asset('assets/sun.png')),
+                      child: Fragment(
+                        child: GeneralInfo(),
+                      ),
                     ),
                     Expanded(
-                      child: Fragment(image: Image.asset('assets/moon.png')),
+                      child: Fragment(
+                        child: AdditionalInfo(),
+                      ),
                     ),
                   ],
                 );
