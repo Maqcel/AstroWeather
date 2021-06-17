@@ -1,10 +1,12 @@
 import 'dart:io';
+import 'package:astro_weather_2/screens/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 Future<void> main() async {
-  String directoryPath = Directory.current.path;
-  Hive..init(directoryPath);
+  WidgetsFlutterBinding.ensureInitialized();
+  // String directoryPath = Directory.current.path;
+  // Hive..init(directoryPath);
   runApp(MyApp());
 }
 
@@ -13,10 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AstroWeather',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(),
+      home: MainScreen(),
     );
   }
 }
