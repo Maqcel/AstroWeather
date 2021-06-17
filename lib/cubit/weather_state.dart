@@ -5,6 +5,7 @@ abstract class WeatherState with _$WeatherState {
   const factory WeatherState({
     required String name,
     required bool isLoading,
+    required bool isConnected,
     required Forecast? forecast,
   }) = _WeatherState;
 
@@ -12,7 +13,8 @@ abstract class WeatherState with _$WeatherState {
 
   factory WeatherState.init({required String name}) => WeatherState(
         forecast: null,
-        isLoading: false,
+        isLoading: true,
+        isConnected: false,
         name: name,
       );
 }

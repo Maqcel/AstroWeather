@@ -11,6 +11,8 @@ part 'weather_cubit.freezed.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
   final WeatherRepository _weatherRepository;
+  late Timer _fetching;
+  late Timer _restoring;
 
   WeatherCubit(this._weatherRepository) : super(WeatherState.init(name: ''));
 
@@ -18,26 +20,48 @@ class WeatherCubit extends Cubit<WeatherState> {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        print('Connected');
         return true;
       }
     } on SocketException catch (_) {
-      print('No connection');
       return false;
     }
     return false;
   }
 
   Future<void> startFetching() async {
-    Timer.periodic(
-      Duration(minutes: 1),
+    final bool isConnected = await _checkConnection();
+    if (!isConnected) {
+      emit(state.copyWith(isConnected: false));
+    }
+    _fetching = Timer.periodic(
+      Duration(seconds: 15),
       (timer) async {
         final bool isConnected = await _checkConnection();
         if (!isConnected) {
+          emit(state.copyWith(isConnected: false));
           timer.cancel();
         }
         //! API CALL
       },
     );
+  }
+
+  Future<void> waitForConnection() async {
+    _restoring = Timer.periodic(
+      Duration(seconds: 5),
+      (timer) async {
+        final bool isConnected = await _checkConnection();
+        if (isConnected) {
+          timer.cancel();
+          startFetching();
+          emit(state.copyWith(isConnected: true));
+        }
+      },
+    );
+  }
+
+  void closeTimers() {
+    if (_fetching.isActive) _fetching.cancel();
+    if (_fetching.isActive) _restoring.cancel();
   }
 }
