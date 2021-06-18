@@ -20,12 +20,14 @@ class _$ForecastTearOff {
       {required String name,
       required Coord coord,
       required Wind wind,
-      required Weather weather}) {
+      required Weather weather,
+      required Description description}) {
     return _Forecast(
       name: name,
       coord: coord,
       wind: wind,
       weather: weather,
+      description: description,
     );
   }
 }
@@ -39,6 +41,7 @@ mixin _$Forecast {
   Coord get coord => throw _privateConstructorUsedError;
   Wind get wind => throw _privateConstructorUsedError;
   Weather get weather => throw _privateConstructorUsedError;
+  Description get description => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ForecastCopyWith<Forecast> get copyWith =>
@@ -49,11 +52,17 @@ mixin _$Forecast {
 abstract class $ForecastCopyWith<$Res> {
   factory $ForecastCopyWith(Forecast value, $Res Function(Forecast) then) =
       _$ForecastCopyWithImpl<$Res>;
-  $Res call({String name, Coord coord, Wind wind, Weather weather});
+  $Res call(
+      {String name,
+      Coord coord,
+      Wind wind,
+      Weather weather,
+      Description description});
 
   $CoordCopyWith<$Res> get coord;
   $WindCopyWith<$Res> get wind;
   $WeatherCopyWith<$Res> get weather;
+  $DescriptionCopyWith<$Res> get description;
 }
 
 /// @nodoc
@@ -70,6 +79,7 @@ class _$ForecastCopyWithImpl<$Res> implements $ForecastCopyWith<$Res> {
     Object? coord = freezed,
     Object? wind = freezed,
     Object? weather = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -88,6 +98,10 @@ class _$ForecastCopyWithImpl<$Res> implements $ForecastCopyWith<$Res> {
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
               as Weather,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as Description,
     ));
   }
 
@@ -111,6 +125,13 @@ class _$ForecastCopyWithImpl<$Res> implements $ForecastCopyWith<$Res> {
       return _then(_value.copyWith(weather: value));
     });
   }
+
+  @override
+  $DescriptionCopyWith<$Res> get description {
+    return $DescriptionCopyWith<$Res>(_value.description, (value) {
+      return _then(_value.copyWith(description: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -118,7 +139,12 @@ abstract class _$ForecastCopyWith<$Res> implements $ForecastCopyWith<$Res> {
   factory _$ForecastCopyWith(_Forecast value, $Res Function(_Forecast) then) =
       __$ForecastCopyWithImpl<$Res>;
   @override
-  $Res call({String name, Coord coord, Wind wind, Weather weather});
+  $Res call(
+      {String name,
+      Coord coord,
+      Wind wind,
+      Weather weather,
+      Description description});
 
   @override
   $CoordCopyWith<$Res> get coord;
@@ -126,6 +152,8 @@ abstract class _$ForecastCopyWith<$Res> implements $ForecastCopyWith<$Res> {
   $WindCopyWith<$Res> get wind;
   @override
   $WeatherCopyWith<$Res> get weather;
+  @override
+  $DescriptionCopyWith<$Res> get description;
 }
 
 /// @nodoc
@@ -143,6 +171,7 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
     Object? coord = freezed,
     Object? wind = freezed,
     Object? weather = freezed,
+    Object? description = freezed,
   }) {
     return _then(_Forecast(
       name: name == freezed
@@ -161,6 +190,10 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
               as Weather,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as Description,
     ));
   }
 }
@@ -172,7 +205,8 @@ class _$_Forecast extends _Forecast {
       {required this.name,
       required this.coord,
       required this.wind,
-      required this.weather})
+      required this.weather,
+      required this.description})
       : super._();
 
   @override
@@ -183,10 +217,12 @@ class _$_Forecast extends _Forecast {
   final Wind wind;
   @override
   final Weather weather;
+  @override
+  final Description description;
 
   @override
   String toString() {
-    return 'Forecast(name: $name, coord: $coord, wind: $wind, weather: $weather)';
+    return 'Forecast(name: $name, coord: $coord, wind: $wind, weather: $weather, description: $description)';
   }
 
   @override
@@ -200,7 +236,11 @@ class _$_Forecast extends _Forecast {
             (identical(other.wind, wind) ||
                 const DeepCollectionEquality().equals(other.wind, wind)) &&
             (identical(other.weather, weather) ||
-                const DeepCollectionEquality().equals(other.weather, weather)));
+                const DeepCollectionEquality()
+                    .equals(other.weather, weather)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)));
   }
 
   @override
@@ -209,7 +249,8 @@ class _$_Forecast extends _Forecast {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(coord) ^
       const DeepCollectionEquality().hash(wind) ^
-      const DeepCollectionEquality().hash(weather);
+      const DeepCollectionEquality().hash(weather) ^
+      const DeepCollectionEquality().hash(description);
 
   @JsonKey(ignore: true)
   @override
@@ -222,7 +263,8 @@ abstract class _Forecast extends Forecast {
       {required String name,
       required Coord coord,
       required Wind wind,
-      required Weather weather}) = _$_Forecast;
+      required Weather weather,
+      required Description description}) = _$_Forecast;
   _Forecast._() : super._();
 
   @override
@@ -233,6 +275,8 @@ abstract class _Forecast extends Forecast {
   Wind get wind => throw _privateConstructorUsedError;
   @override
   Weather get weather => throw _privateConstructorUsedError;
+  @override
+  Description get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ForecastCopyWith<_Forecast> get copyWith =>

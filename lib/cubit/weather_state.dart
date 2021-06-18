@@ -7,14 +7,18 @@ class WeatherState with _$WeatherState {
     required bool isLoading,
     required bool isConnected,
     required Forecast? forecast,
+    required AppExceptions validator,
+    required bool isFetched,
   }) = _WeatherState;
 
   const WeatherState._();
 
   factory WeatherState.init({required String name}) => WeatherState(
         forecast: null,
-        isLoading: true,
+        isLoading: false,
         isConnected: false,
         name: name,
+        isFetched: false,
+        validator: ValueIsValid.valueIsValid(),
       );
 }

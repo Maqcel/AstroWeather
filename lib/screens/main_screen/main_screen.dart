@@ -20,7 +20,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     _weatherCubit.startFetching();
-    _weatherCubit.call();
     super.initState();
   }
 

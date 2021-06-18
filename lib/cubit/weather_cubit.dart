@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:astro_weather_2/config/exceptions/exceptions.dart';
 import 'package:astro_weather_2/models/forecast/forecast.dart';
 import 'package:astro_weather_2/repository/weather_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -16,20 +17,16 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   WeatherCubit(this._weatherRepository) : super(WeatherState.init(name: ''));
 
-  void call() {
-    _weatherRepository.requestCurrentForecast(name: 'Łódź');
-  }
-
   Future<bool> _checkConnection() async {
-    // try {
-    //   final result = await InternetAddress.lookup('google.com');
-    //   if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-    //     return true;
-    //   }
-    // } on SocketException catch (_) {
-    //   return false;
-    // }
-    return true;
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      }
+    } on SocketException catch (_) {
+      return false;
+    }
+    return false;
   }
 
   Future<void> startFetching() async {
@@ -45,7 +42,20 @@ class WeatherCubit extends Cubit<WeatherState> {
           emit(state.copyWith(isConnected: false));
           timer.cancel();
         }
-        //! API CALL
+        final result = await _weatherRepository.requestCurrentForecast(
+          name: 'Łódź',
+          unit: 'metric',
+        );
+        result.fold(
+          (fail) => emit(state.copyWith(
+            isLoading: false,
+            validator: fail,
+          )),
+          (success) => emit(state.copyWith(
+            forecast: success,
+            isLoading: false,
+          )),
+        );
       },
     );
   }
