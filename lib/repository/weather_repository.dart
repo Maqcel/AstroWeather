@@ -31,7 +31,7 @@ class WeatherRepository {
       //? 200 int '404' String
       final String status = responseBody['cod'].toString();
       throwIf(status == '404', RequestException.cityNotFound());
-      throwIf(status != '201', RequestException.requestFailure());
+      throwIf(status != '200', RequestException.requestFailure());
       Coord coord = Coord.fromJson(responseBody['coord']);
       Weather weather = Weather.fromJson(responseBody['main']);
       Wind wind = Wind.fromJson(responseBody['wind']);
@@ -43,7 +43,6 @@ class WeatherRepository {
         coord: coord,
         weather: weather,
         wind: wind,
-        name: name,
         description: description,
       );
       return right(forecast);

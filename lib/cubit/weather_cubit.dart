@@ -22,11 +22,11 @@ class WeatherCubit extends Cubit<WeatherState> {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         return true;
-      }
+      } else
+        throw SocketException;
     } on SocketException catch (_) {
       return false;
     }
-    return false;
   }
 
   Future<void> startFetching() async {
@@ -54,6 +54,7 @@ class WeatherCubit extends Cubit<WeatherState> {
           (success) => emit(state.copyWith(
             forecast: success,
             isLoading: false,
+            name: 'Łódź',
           )),
         );
       },
@@ -77,5 +78,9 @@ class WeatherCubit extends Cubit<WeatherState> {
   void closeTimers() {
     if (_fetching.isActive) _fetching.cancel();
     if (_fetching.isActive) _restoring.cancel();
+  }
+
+  void clearErrorState() {
+    emit(state.copyWith(validator: const ValueIsValid.valueIsValid()));
   }
 }

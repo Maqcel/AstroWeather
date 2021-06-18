@@ -17,13 +17,11 @@ class _$ForecastTearOff {
   const _$ForecastTearOff();
 
   _Forecast call(
-      {required String name,
-      required Coord coord,
+      {required Coord coord,
       required Wind wind,
       required Weather weather,
       required Description description}) {
     return _Forecast(
-      name: name,
       coord: coord,
       wind: wind,
       weather: weather,
@@ -37,7 +35,6 @@ const $Forecast = _$ForecastTearOff();
 
 /// @nodoc
 mixin _$Forecast {
-  String get name => throw _privateConstructorUsedError;
   Coord get coord => throw _privateConstructorUsedError;
   Wind get wind => throw _privateConstructorUsedError;
   Weather get weather => throw _privateConstructorUsedError;
@@ -52,12 +49,7 @@ mixin _$Forecast {
 abstract class $ForecastCopyWith<$Res> {
   factory $ForecastCopyWith(Forecast value, $Res Function(Forecast) then) =
       _$ForecastCopyWithImpl<$Res>;
-  $Res call(
-      {String name,
-      Coord coord,
-      Wind wind,
-      Weather weather,
-      Description description});
+  $Res call({Coord coord, Wind wind, Weather weather, Description description});
 
   $CoordCopyWith<$Res> get coord;
   $WindCopyWith<$Res> get wind;
@@ -75,17 +67,12 @@ class _$ForecastCopyWithImpl<$Res> implements $ForecastCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? name = freezed,
     Object? coord = freezed,
     Object? wind = freezed,
     Object? weather = freezed,
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       coord: coord == freezed
           ? _value.coord
           : coord // ignore: cast_nullable_to_non_nullable
@@ -139,12 +126,7 @@ abstract class _$ForecastCopyWith<$Res> implements $ForecastCopyWith<$Res> {
   factory _$ForecastCopyWith(_Forecast value, $Res Function(_Forecast) then) =
       __$ForecastCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String name,
-      Coord coord,
-      Wind wind,
-      Weather weather,
-      Description description});
+  $Res call({Coord coord, Wind wind, Weather weather, Description description});
 
   @override
   $CoordCopyWith<$Res> get coord;
@@ -167,17 +149,12 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
     Object? coord = freezed,
     Object? wind = freezed,
     Object? weather = freezed,
     Object? description = freezed,
   }) {
     return _then(_Forecast(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       coord: coord == freezed
           ? _value.coord
           : coord // ignore: cast_nullable_to_non_nullable
@@ -202,15 +179,12 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
 
 class _$_Forecast extends _Forecast {
   _$_Forecast(
-      {required this.name,
-      required this.coord,
+      {required this.coord,
       required this.wind,
       required this.weather,
       required this.description})
       : super._();
 
-  @override
-  final String name;
   @override
   final Coord coord;
   @override
@@ -222,15 +196,13 @@ class _$_Forecast extends _Forecast {
 
   @override
   String toString() {
-    return 'Forecast(name: $name, coord: $coord, wind: $wind, weather: $weather, description: $description)';
+    return 'Forecast(coord: $coord, wind: $wind, weather: $weather, description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Forecast &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.coord, coord) ||
                 const DeepCollectionEquality().equals(other.coord, coord)) &&
             (identical(other.wind, wind) ||
@@ -246,7 +218,6 @@ class _$_Forecast extends _Forecast {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(coord) ^
       const DeepCollectionEquality().hash(wind) ^
       const DeepCollectionEquality().hash(weather) ^
@@ -260,15 +231,12 @@ class _$_Forecast extends _Forecast {
 
 abstract class _Forecast extends Forecast {
   factory _Forecast(
-      {required String name,
-      required Coord coord,
+      {required Coord coord,
       required Wind wind,
       required Weather weather,
       required Description description}) = _$_Forecast;
   _Forecast._() : super._();
 
-  @override
-  String get name => throw _privateConstructorUsedError;
   @override
   Coord get coord => throw _privateConstructorUsedError;
   @override

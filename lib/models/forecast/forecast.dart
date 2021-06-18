@@ -9,7 +9,6 @@ part 'forecast.freezed.dart';
 @freezed
 class Forecast with _$Forecast {
   factory Forecast({
-    required String name,
     required Coord coord,
     required Wind wind,
     required Weather weather,

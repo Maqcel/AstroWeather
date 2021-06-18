@@ -50,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(Constants.defaultPadding),
-                      child: Text('Place name'),
+                      child: Text(state.name),
                     ),
                     Expanded(
                       flex: 1,
@@ -64,10 +64,10 @@ class _MainScreenState extends State<MainScreen> {
                               scrollDirection: Axis.horizontal,
                               children: [
                                 Fragment(
-                                  child: GeneralInfo(),
+                                  child: GeneralInfo(state: state),
                                 ),
                                 Fragment(
-                                  child: AdditionalInfo(),
+                                  child: AdditionalInfo(state: state),
                                 ),
                               ],
                             );
@@ -76,12 +76,12 @@ class _MainScreenState extends State<MainScreen> {
                             children: [
                               Expanded(
                                 child: Fragment(
-                                  child: GeneralInfo(),
+                                  child: GeneralInfo(state: state),
                                 ),
                               ),
                               Expanded(
                                 child: Fragment(
-                                  child: AdditionalInfo(),
+                                  child: AdditionalInfo(state: state),
                                 ),
                               ),
                             ],

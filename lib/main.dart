@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'AstroWeather',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: TextTheme(
+          bodyText2: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500),
+        ),
         primarySwatch: Colors.blue,
       ),
       home: MainScreen(),
