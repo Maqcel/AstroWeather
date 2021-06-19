@@ -9,6 +9,7 @@ import '/screens/main_screen/components/additional_info.dart';
 import '/screens/main_screen/components/clock_widget.dart';
 import '/screens/main_screen/components/fragment.dart';
 import '/screens/main_screen/components/general_info.dart';
+import '/screens/main_screen/components/settings.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -34,6 +35,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Settings(weatherCubit: _weatherCubit),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
