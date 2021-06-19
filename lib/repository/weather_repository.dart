@@ -1,18 +1,19 @@
 import 'dart:convert';
 
-import 'package:astro_weather_2/config/api_key.dart';
-import 'package:astro_weather_2/config/exceptions/exceptions.dart';
-import 'package:astro_weather_2/models/forecast/forecast.dart';
-import 'package:astro_weather_2/models/json/coord/coord.dart';
-import 'package:astro_weather_2/models/json/description/description.dart';
-import 'package:astro_weather_2/models/json/weather/weather.dart';
-import 'package:astro_weather_2/models/json/wind/wind.dart';
 import 'package:dartz/dartz.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
+
+import '/config/api_key.dart';
+import '/config/exceptions/exceptions.dart';
+import '/models/forecast/forecast.dart';
+import '/models/json/coord/coord.dart';
+import '/models/json/description/description.dart';
+import '/models/json/weather/weather.dart';
+import '/models/json/wind/wind.dart';
 
 @lazySingleton
 class WeatherRepository {

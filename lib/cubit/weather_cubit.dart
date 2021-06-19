@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:astro_weather_2/config/exceptions/exceptions.dart';
-import 'package:astro_weather_2/models/forecast/forecast.dart';
-import 'package:astro_weather_2/repository/weather_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+
+import '/config/exceptions/exceptions.dart';
+import '/models/forecast/forecast.dart';
+import '/repository/weather_repository.dart';
 
 part 'weather_state.dart';
 part 'weather_cubit.freezed.dart';

@@ -1,7 +1,7 @@
-import 'package:astro_weather_2/constants.dart';
-import 'package:astro_weather_2/cubit/weather_cubit.dart';
-import 'package:astro_weather_2/models/forecast/forecast.dart';
 import 'package:flutter/material.dart';
+
+import '/cubit/weather_cubit.dart';
+import '/models/forecast/forecast.dart';
 
 class AdditionalInfo extends StatelessWidget {
   final WeatherState state;

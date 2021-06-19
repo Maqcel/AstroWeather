@@ -1,8 +1,8 @@
-import 'package:astro_weather_2/config/injection/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'config/injection/injection.dart';
 import 'models/forecast/forecast.dart';
 import 'models/json/coord/coord.dart';
 import 'models/json/description/description.dart';

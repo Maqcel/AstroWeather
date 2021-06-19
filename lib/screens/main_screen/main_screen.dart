@@ -1,12 +1,13 @@
-import 'package:astro_weather_2/config/injection/injection.dart';
-import 'package:astro_weather_2/constants.dart';
-import 'package:astro_weather_2/cubit/weather_cubit.dart';
-import 'package:astro_weather_2/screens/main_screen/components/additional_info.dart';
-import 'package:astro_weather_2/screens/main_screen/components/clock_widget.dart';
-import 'package:astro_weather_2/screens/main_screen/components/fragment.dart';
-import 'package:astro_weather_2/screens/main_screen/components/general_info.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+
+import '/config/injection/injection.dart';
+import '/constants.dart';
+import '/cubit/weather_cubit.dart';
+import '/screens/main_screen/components/additional_info.dart';
+import '/screens/main_screen/components/clock_widget.dart';
+import '/screens/main_screen/components/fragment.dart';
+import '/screens/main_screen/components/general_info.dart';
 
 class MainScreen extends StatefulWidget {
   @override

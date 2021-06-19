@@ -1,9 +1,10 @@
-import 'package:astro_weather_2/models/json/coord/coord.dart';
-import 'package:astro_weather_2/models/json/description/description.dart';
-import 'package:astro_weather_2/models/json/weather/weather.dart';
-import 'package:astro_weather_2/models/json/wind/wind.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+
+import '/models/json/coord/coord.dart';
+import '/models/json/description/description.dart';
+import '/models/json/weather/weather.dart';
+import '/models/json/wind/wind.dart';
 
 part 'forecast.freezed.dart';
 part 'forecast.g.dart';
