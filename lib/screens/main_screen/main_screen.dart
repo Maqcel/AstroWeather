@@ -53,7 +53,8 @@ class _MainScreenState extends State<MainScreen> {
                     Padding(
                       padding: const EdgeInsets.all(Constants.defaultPadding),
                       child: Text(
-                        '${state.name} from: ${state.forecast!.timestamp}',
+                        '${state.name} from: ${state.forecast!.timestamp}\nUnits: ${state.forecast!.units}',
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     Expanded(

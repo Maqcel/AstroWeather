@@ -26,7 +26,8 @@ class _$ForecastTearOff {
       @HiveField(2) required Coord coord,
       @HiveField(3) required Wind wind,
       @HiveField(4) required Weather weather,
-      @HiveField(5) required Description description}) {
+      @HiveField(5) required Description description,
+      @HiveField(6) required String units}) {
     return _Forecast(
       timestamp: timestamp,
       name: name,
@@ -34,6 +35,7 @@ class _$ForecastTearOff {
       wind: wind,
       weather: weather,
       description: description,
+      units: units,
     );
   }
 
@@ -59,6 +61,8 @@ mixin _$Forecast {
   Weather get weather => throw _privateConstructorUsedError;
   @HiveField(5)
   Description get description => throw _privateConstructorUsedError;
+  @HiveField(6)
+  String get units => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -76,7 +80,8 @@ abstract class $ForecastCopyWith<$Res> {
       @HiveField(2) Coord coord,
       @HiveField(3) Wind wind,
       @HiveField(4) Weather weather,
-      @HiveField(5) Description description});
+      @HiveField(5) Description description,
+      @HiveField(6) String units});
 
   $CoordCopyWith<$Res> get coord;
   $WindCopyWith<$Res> get wind;
@@ -100,6 +105,7 @@ class _$ForecastCopyWithImpl<$Res> implements $ForecastCopyWith<$Res> {
     Object? wind = freezed,
     Object? weather = freezed,
     Object? description = freezed,
+    Object? units = freezed,
   }) {
     return _then(_value.copyWith(
       timestamp: timestamp == freezed
@@ -126,6 +132,10 @@ class _$ForecastCopyWithImpl<$Res> implements $ForecastCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as Description,
+      units: units == freezed
+          ? _value.units
+          : units // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -169,7 +179,8 @@ abstract class _$ForecastCopyWith<$Res> implements $ForecastCopyWith<$Res> {
       @HiveField(2) Coord coord,
       @HiveField(3) Wind wind,
       @HiveField(4) Weather weather,
-      @HiveField(5) Description description});
+      @HiveField(5) Description description,
+      @HiveField(6) String units});
 
   @override
   $CoordCopyWith<$Res> get coord;
@@ -198,6 +209,7 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
     Object? wind = freezed,
     Object? weather = freezed,
     Object? description = freezed,
+    Object? units = freezed,
   }) {
     return _then(_Forecast(
       timestamp: timestamp == freezed
@@ -224,6 +236,10 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as Description,
+      units: units == freezed
+          ? _value.units
+          : units // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -238,7 +254,8 @@ class _$_Forecast extends _Forecast {
       @HiveField(2) required this.coord,
       @HiveField(3) required this.wind,
       @HiveField(4) required this.weather,
-      @HiveField(5) required this.description})
+      @HiveField(5) required this.description,
+      @HiveField(6) required this.units})
       : super._();
 
   factory _$_Forecast.fromJson(Map<String, dynamic> json) =>
@@ -262,10 +279,13 @@ class _$_Forecast extends _Forecast {
   @override
   @HiveField(5)
   final Description description;
+  @override
+  @HiveField(6)
+  final String units;
 
   @override
   String toString() {
-    return 'Forecast(timestamp: $timestamp, name: $name, coord: $coord, wind: $wind, weather: $weather, description: $description)';
+    return 'Forecast(timestamp: $timestamp, name: $name, coord: $coord, wind: $wind, weather: $weather, description: $description, units: $units)';
   }
 
   @override
@@ -286,7 +306,9 @@ class _$_Forecast extends _Forecast {
                     .equals(other.weather, weather)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
-                    .equals(other.description, description)));
+                    .equals(other.description, description)) &&
+            (identical(other.units, units) ||
+                const DeepCollectionEquality().equals(other.units, units)));
   }
 
   @override
@@ -297,7 +319,8 @@ class _$_Forecast extends _Forecast {
       const DeepCollectionEquality().hash(coord) ^
       const DeepCollectionEquality().hash(wind) ^
       const DeepCollectionEquality().hash(weather) ^
-      const DeepCollectionEquality().hash(description);
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(units);
 
   @JsonKey(ignore: true)
   @override
@@ -317,7 +340,8 @@ abstract class _Forecast extends Forecast {
       @HiveField(2) required Coord coord,
       @HiveField(3) required Wind wind,
       @HiveField(4) required Weather weather,
-      @HiveField(5) required Description description}) = _$_Forecast;
+      @HiveField(5) required Description description,
+      @HiveField(6) required String units}) = _$_Forecast;
   _Forecast._() : super._();
 
   factory _Forecast.fromJson(Map<String, dynamic> json) = _$_Forecast.fromJson;
@@ -340,6 +364,9 @@ abstract class _Forecast extends Forecast {
   @override
   @HiveField(5)
   Description get description => throw _privateConstructorUsedError;
+  @override
+  @HiveField(6)
+  String get units => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ForecastCopyWith<_Forecast> get copyWith =>

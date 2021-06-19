@@ -50,6 +50,7 @@ class WeatherRepository {
         weather: weather,
         wind: wind,
         description: description,
+        units: unit,
       );
       Box<Forecast> hiveDb = Hive.box<Forecast>(Constants.hiveForecastsBoxKey);
       hiveDb.put(Constants.lastForecastKey, forecast);

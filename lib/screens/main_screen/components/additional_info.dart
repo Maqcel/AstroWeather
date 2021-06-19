@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '/constants.dart';
 import '/cubit/weather_cubit.dart';
 import '/models/forecast/forecast.dart';
 
@@ -10,41 +11,40 @@ class AdditionalInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Forecast? forecast = state.forecast;
-    return forecast != null
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Temperature feels like:\n${forecast.weather.feels_like}',
-                textAlign: TextAlign.center,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'Temperature min:\n${forecast.weather.temp_min}',
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'Temperature max:\n${forecast.weather.temp_max}',
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-              Text(
-                'Pressure:\n${forecast.weather.pressure}',
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                'Humidity:\n${forecast.weather.humidity}%',
-                textAlign: TextAlign.center,
-              ),
-            ],
-          )
-        : Container(
-            child: Text('implement db'),
-          );
+    Forecast forecast = state.forecast!;
+    String temp = state.forecast!.units == 'metric'
+        ? Constants.degreeCelsius
+        : Constants.degreeFahrenheit;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          'Temperature feels like:\n${forecast.weather.feels_like}$temp',
+          textAlign: TextAlign.center,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'Temperature min:\n${forecast.weather.temp_min}$temp',
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Temperature max:\n${forecast.weather.temp_max}$temp',
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+        Text(
+          'Pressure:\n${forecast.weather.pressure}${Constants.pressure}',
+          textAlign: TextAlign.center,
+        ),
+        Text(
+          'Humidity:\n${forecast.weather.humidity}%',
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
   }
 }

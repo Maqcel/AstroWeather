@@ -23,13 +23,14 @@ class ForecastHiveAdapter extends TypeAdapter<_$_Forecast> {
       wind: fields[3] as Wind,
       weather: fields[4] as Weather,
       description: fields[5] as Description,
+      units: fields[6] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_Forecast obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.timestamp)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class ForecastHiveAdapter extends TypeAdapter<_$_Forecast> {
       ..writeByte(4)
       ..write(obj.weather)
       ..writeByte(5)
-      ..write(obj.description);
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.units);
   }
 
   @override
@@ -68,6 +71,7 @@ _$_Forecast _$_$_ForecastFromJson(Map<String, dynamic> json) {
     weather: Weather.fromJson(json['weather'] as Map<String, dynamic>),
     description:
         Description.fromJson(json['description'] as Map<String, dynamic>),
+    units: json['units'] as String,
   );
 }
 
@@ -79,4 +83,5 @@ Map<String, dynamic> _$_$_ForecastToJson(_$_Forecast instance) =>
       'wind': instance.wind,
       'weather': instance.weather,
       'description': instance.description,
+      'units': instance.units,
     };

@@ -6,4 +6,9 @@ class Constants {
   static const String lastForecastKey = 'weather';
   static const String hiveForecastsBoxKey = 'forecast';
   static const String dateTimeFormat = 'dd/MM/yyyy hh:mm:ss';
+  static const String degreeCelsius = '°C';
+  static const String degreeFahrenheit = '°F';
+  static const String speedMetric = 'km/h';
+  static const String speedImperial = 'mph';
+  static const String pressure = 'hPa';
 }

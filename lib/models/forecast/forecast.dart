@@ -19,6 +19,7 @@ class Forecast with _$Forecast {
     @HiveField(3) required Wind wind,
     @HiveField(4) required Weather weather,
     @HiveField(5) required Description description,
+    @HiveField(6) required String units,
   }) = _Forecast;
 
   const Forecast._();

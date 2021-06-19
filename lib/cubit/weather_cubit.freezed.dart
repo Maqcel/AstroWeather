@@ -21,13 +21,15 @@ class _$WeatherStateTearOff {
       required bool isLoading,
       required Forecast? forecast,
       required AppExceptions validator,
-      required bool isFetched}) {
+      required bool isFetched,
+      required String unit}) {
     return _WeatherState(
       name: name,
       isLoading: isLoading,
       forecast: forecast,
       validator: validator,
       isFetched: isFetched,
+      unit: unit,
     );
   }
 }
@@ -42,6 +44,7 @@ mixin _$WeatherState {
   Forecast? get forecast => throw _privateConstructorUsedError;
   AppExceptions get validator => throw _privateConstructorUsedError;
   bool get isFetched => throw _privateConstructorUsedError;
+  String get unit => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WeatherStateCopyWith<WeatherState> get copyWith =>
@@ -58,7 +61,8 @@ abstract class $WeatherStateCopyWith<$Res> {
       bool isLoading,
       Forecast? forecast,
       AppExceptions validator,
-      bool isFetched});
+      bool isFetched,
+      String unit});
 
   $ForecastCopyWith<$Res>? get forecast;
 }
@@ -78,6 +82,7 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
     Object? forecast = freezed,
     Object? validator = freezed,
     Object? isFetched = freezed,
+    Object? unit = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -100,6 +105,10 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
           ? _value.isFetched
           : isFetched // ignore: cast_nullable_to_non_nullable
               as bool,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -127,7 +136,8 @@ abstract class _$WeatherStateCopyWith<$Res>
       bool isLoading,
       Forecast? forecast,
       AppExceptions validator,
-      bool isFetched});
+      bool isFetched,
+      String unit});
 
   @override
   $ForecastCopyWith<$Res>? get forecast;
@@ -150,6 +160,7 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
     Object? forecast = freezed,
     Object? validator = freezed,
     Object? isFetched = freezed,
+    Object? unit = freezed,
   }) {
     return _then(_WeatherState(
       name: name == freezed
@@ -172,6 +183,10 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
           ? _value.isFetched
           : isFetched // ignore: cast_nullable_to_non_nullable
               as bool,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -184,7 +199,8 @@ class _$_WeatherState extends _WeatherState {
       required this.isLoading,
       required this.forecast,
       required this.validator,
-      required this.isFetched})
+      required this.isFetched,
+      required this.unit})
       : super._();
 
   @override
@@ -197,10 +213,12 @@ class _$_WeatherState extends _WeatherState {
   final AppExceptions validator;
   @override
   final bool isFetched;
+  @override
+  final String unit;
 
   @override
   String toString() {
-    return 'WeatherState(name: $name, isLoading: $isLoading, forecast: $forecast, validator: $validator, isFetched: $isFetched)';
+    return 'WeatherState(name: $name, isLoading: $isLoading, forecast: $forecast, validator: $validator, isFetched: $isFetched, unit: $unit)';
   }
 
   @override
@@ -220,7 +238,9 @@ class _$_WeatherState extends _WeatherState {
                     .equals(other.validator, validator)) &&
             (identical(other.isFetched, isFetched) ||
                 const DeepCollectionEquality()
-                    .equals(other.isFetched, isFetched)));
+                    .equals(other.isFetched, isFetched)) &&
+            (identical(other.unit, unit) ||
+                const DeepCollectionEquality().equals(other.unit, unit)));
   }
 
   @override
@@ -230,7 +250,8 @@ class _$_WeatherState extends _WeatherState {
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(forecast) ^
       const DeepCollectionEquality().hash(validator) ^
-      const DeepCollectionEquality().hash(isFetched);
+      const DeepCollectionEquality().hash(isFetched) ^
+      const DeepCollectionEquality().hash(unit);
 
   @JsonKey(ignore: true)
   @override
@@ -244,7 +265,8 @@ abstract class _WeatherState extends WeatherState {
       required bool isLoading,
       required Forecast? forecast,
       required AppExceptions validator,
-      required bool isFetched}) = _$_WeatherState;
+      required bool isFetched,
+      required String unit}) = _$_WeatherState;
   const _WeatherState._() : super._();
 
   @override
@@ -257,6 +279,8 @@ abstract class _WeatherState extends WeatherState {
   AppExceptions get validator => throw _privateConstructorUsedError;
   @override
   bool get isFetched => throw _privateConstructorUsedError;
+  @override
+  String get unit => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$WeatherStateCopyWith<_WeatherState> get copyWith =>
