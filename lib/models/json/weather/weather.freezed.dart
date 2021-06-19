@@ -21,12 +21,12 @@ class _$WeatherTearOff {
   const _$WeatherTearOff();
 
   _Weather call(
-      {required double temp,
-      required double feels_like,
-      required double temp_min,
-      required double temp_max,
-      required int pressure,
-      required int humidity}) {
+      {@HiveField(0) required double temp,
+      @HiveField(1) required double feels_like,
+      @HiveField(2) required double temp_min,
+      @HiveField(3) required double temp_max,
+      @HiveField(4) required int pressure,
+      @HiveField(5) required int humidity}) {
     return _Weather(
       temp: temp,
       feels_like: feels_like,
@@ -47,14 +47,20 @@ const $Weather = _$WeatherTearOff();
 
 /// @nodoc
 mixin _$Weather {
+  @HiveField(0)
   double get temp =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  @HiveField(1)
   double get feels_like =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  @HiveField(2)
   double get temp_min =>
       throw _privateConstructorUsedError; // ignore: non_constant_identifier_names
+  @HiveField(3)
   double get temp_max => throw _privateConstructorUsedError;
+  @HiveField(4)
   int get pressure => throw _privateConstructorUsedError;
+  @HiveField(5)
   int get humidity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -67,12 +73,12 @@ abstract class $WeatherCopyWith<$Res> {
   factory $WeatherCopyWith(Weather value, $Res Function(Weather) then) =
       _$WeatherCopyWithImpl<$Res>;
   $Res call(
-      {double temp,
-      double feels_like,
-      double temp_min,
-      double temp_max,
-      int pressure,
-      int humidity});
+      {@HiveField(0) double temp,
+      @HiveField(1) double feels_like,
+      @HiveField(2) double temp_min,
+      @HiveField(3) double temp_max,
+      @HiveField(4) int pressure,
+      @HiveField(5) int humidity});
 }
 
 /// @nodoc
@@ -127,12 +133,12 @@ abstract class _$WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
       __$WeatherCopyWithImpl<$Res>;
   @override
   $Res call(
-      {double temp,
-      double feels_like,
-      double temp_min,
-      double temp_max,
-      int pressure,
-      int humidity});
+      {@HiveField(0) double temp,
+      @HiveField(1) double feels_like,
+      @HiveField(2) double temp_min,
+      @HiveField(3) double temp_max,
+      @HiveField(4) int pressure,
+      @HiveField(5) int humidity});
 }
 
 /// @nodoc
@@ -184,30 +190,37 @@ class __$WeatherCopyWithImpl<$Res> extends _$WeatherCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 3, adapterName: 'WeatherHiveAdapter')
 class _$_Weather extends _Weather {
   _$_Weather(
-      {required this.temp,
-      required this.feels_like,
-      required this.temp_min,
-      required this.temp_max,
-      required this.pressure,
-      required this.humidity})
+      {@HiveField(0) required this.temp,
+      @HiveField(1) required this.feels_like,
+      @HiveField(2) required this.temp_min,
+      @HiveField(3) required this.temp_max,
+      @HiveField(4) required this.pressure,
+      @HiveField(5) required this.humidity})
       : super._();
 
   factory _$_Weather.fromJson(Map<String, dynamic> json) =>
       _$_$_WeatherFromJson(json);
 
   @override
+  @HiveField(0)
   final double temp;
   @override // ignore: non_constant_identifier_names
+  @HiveField(1)
   final double feels_like;
   @override // ignore: non_constant_identifier_names
+  @HiveField(2)
   final double temp_min;
   @override // ignore: non_constant_identifier_names
+  @HiveField(3)
   final double temp_max;
   @override
+  @HiveField(4)
   final int pressure;
   @override
+  @HiveField(5)
   final int humidity;
 
   @override
@@ -261,27 +274,33 @@ class _$_Weather extends _Weather {
 
 abstract class _Weather extends Weather {
   factory _Weather(
-      {required double temp,
-      required double feels_like,
-      required double temp_min,
-      required double temp_max,
-      required int pressure,
-      required int humidity}) = _$_Weather;
+      {@HiveField(0) required double temp,
+      @HiveField(1) required double feels_like,
+      @HiveField(2) required double temp_min,
+      @HiveField(3) required double temp_max,
+      @HiveField(4) required int pressure,
+      @HiveField(5) required int humidity}) = _$_Weather;
   _Weather._() : super._();
 
   factory _Weather.fromJson(Map<String, dynamic> json) = _$_Weather.fromJson;
 
   @override
+  @HiveField(0)
   double get temp => throw _privateConstructorUsedError;
   @override // ignore: non_constant_identifier_names
+  @HiveField(1)
   double get feels_like => throw _privateConstructorUsedError;
   @override // ignore: non_constant_identifier_names
+  @HiveField(2)
   double get temp_min => throw _privateConstructorUsedError;
   @override // ignore: non_constant_identifier_names
+  @HiveField(3)
   double get temp_max => throw _privateConstructorUsedError;
   @override
+  @HiveField(4)
   int get pressure => throw _privateConstructorUsedError;
   @override
+  @HiveField(5)
   int get humidity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

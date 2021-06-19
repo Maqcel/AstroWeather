@@ -20,7 +20,8 @@ Coord _$CoordFromJson(Map<String, dynamic> json) {
 class _$CoordTearOff {
   const _$CoordTearOff();
 
-  _Coord call({required double lon, required double lat}) {
+  _Coord call(
+      {@HiveField(0) required double lon, @HiveField(1) required double lat}) {
     return _Coord(
       lon: lon,
       lat: lat,
@@ -37,7 +38,9 @@ const $Coord = _$CoordTearOff();
 
 /// @nodoc
 mixin _$Coord {
+  @HiveField(0)
   double get lon => throw _privateConstructorUsedError;
+  @HiveField(1)
   double get lat => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +52,7 @@ mixin _$Coord {
 abstract class $CoordCopyWith<$Res> {
   factory $CoordCopyWith(Coord value, $Res Function(Coord) then) =
       _$CoordCopyWithImpl<$Res>;
-  $Res call({double lon, double lat});
+  $Res call({@HiveField(0) double lon, @HiveField(1) double lat});
 }
 
 /// @nodoc
@@ -83,7 +86,7 @@ abstract class _$CoordCopyWith<$Res> implements $CoordCopyWith<$Res> {
   factory _$CoordCopyWith(_Coord value, $Res Function(_Coord) then) =
       __$CoordCopyWithImpl<$Res>;
   @override
-  $Res call({double lon, double lat});
+  $Res call({@HiveField(0) double lon, @HiveField(1) double lat});
 }
 
 /// @nodoc
@@ -115,15 +118,19 @@ class __$CoordCopyWithImpl<$Res> extends _$CoordCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 1, adapterName: 'CoordHiveAdapter')
 class _$_Coord extends _Coord {
-  _$_Coord({required this.lon, required this.lat}) : super._();
+  _$_Coord({@HiveField(0) required this.lon, @HiveField(1) required this.lat})
+      : super._();
 
   factory _$_Coord.fromJson(Map<String, dynamic> json) =>
       _$_$_CoordFromJson(json);
 
   @override
+  @HiveField(0)
   final double lon;
   @override
+  @HiveField(1)
   final double lat;
 
   @override
@@ -159,14 +166,18 @@ class _$_Coord extends _Coord {
 }
 
 abstract class _Coord extends Coord {
-  factory _Coord({required double lon, required double lat}) = _$_Coord;
+  factory _Coord(
+      {@HiveField(0) required double lon,
+      @HiveField(1) required double lat}) = _$_Coord;
   _Coord._() : super._();
 
   factory _Coord.fromJson(Map<String, dynamic> json) = _$_Coord.fromJson;
 
   @override
+  @HiveField(0)
   double get lon => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   double get lat => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

@@ -6,6 +6,7 @@ import 'package:astro_weather_2/models/forecast/forecast.dart';
 import 'package:astro_weather_2/repository/weather_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 
 part 'weather_state.dart';
 part 'weather_cubit.freezed.dart';
@@ -78,6 +79,7 @@ class WeatherCubit extends Cubit<WeatherState> {
   void closeTimers() {
     if (_fetching.isActive) _fetching.cancel();
     if (_fetching.isActive) _restoring.cancel();
+    Hive.close();
   }
 
   void clearErrorState() {

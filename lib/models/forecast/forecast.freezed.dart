@@ -12,21 +12,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Forecast _$ForecastFromJson(Map<String, dynamic> json) {
+  return _Forecast.fromJson(json);
+}
+
 /// @nodoc
 class _$ForecastTearOff {
   const _$ForecastTearOff();
 
   _Forecast call(
-      {required Coord coord,
-      required Wind wind,
-      required Weather weather,
-      required Description description}) {
+      {@HiveField(0) required String timestamp,
+      @HiveField(1) required String name,
+      @HiveField(2) required Coord coord,
+      @HiveField(3) required Wind wind,
+      @HiveField(4) required Weather weather,
+      @HiveField(5) required Description description}) {
     return _Forecast(
+      timestamp: timestamp,
+      name: name,
       coord: coord,
       wind: wind,
       weather: weather,
       description: description,
     );
+  }
+
+  Forecast fromJson(Map<String, Object> json) {
+    return Forecast.fromJson(json);
   }
 }
 
@@ -35,11 +47,20 @@ const $Forecast = _$ForecastTearOff();
 
 /// @nodoc
 mixin _$Forecast {
+  @HiveField(0)
+  String get timestamp => throw _privateConstructorUsedError;
+  @HiveField(1)
+  String get name => throw _privateConstructorUsedError;
+  @HiveField(2)
   Coord get coord => throw _privateConstructorUsedError;
+  @HiveField(3)
   Wind get wind => throw _privateConstructorUsedError;
+  @HiveField(4)
   Weather get weather => throw _privateConstructorUsedError;
+  @HiveField(5)
   Description get description => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ForecastCopyWith<Forecast> get copyWith =>
       throw _privateConstructorUsedError;
@@ -49,7 +70,13 @@ mixin _$Forecast {
 abstract class $ForecastCopyWith<$Res> {
   factory $ForecastCopyWith(Forecast value, $Res Function(Forecast) then) =
       _$ForecastCopyWithImpl<$Res>;
-  $Res call({Coord coord, Wind wind, Weather weather, Description description});
+  $Res call(
+      {@HiveField(0) String timestamp,
+      @HiveField(1) String name,
+      @HiveField(2) Coord coord,
+      @HiveField(3) Wind wind,
+      @HiveField(4) Weather weather,
+      @HiveField(5) Description description});
 
   $CoordCopyWith<$Res> get coord;
   $WindCopyWith<$Res> get wind;
@@ -67,12 +94,22 @@ class _$ForecastCopyWithImpl<$Res> implements $ForecastCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? timestamp = freezed,
+    Object? name = freezed,
     Object? coord = freezed,
     Object? wind = freezed,
     Object? weather = freezed,
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       coord: coord == freezed
           ? _value.coord
           : coord // ignore: cast_nullable_to_non_nullable
@@ -126,7 +163,13 @@ abstract class _$ForecastCopyWith<$Res> implements $ForecastCopyWith<$Res> {
   factory _$ForecastCopyWith(_Forecast value, $Res Function(_Forecast) then) =
       __$ForecastCopyWithImpl<$Res>;
   @override
-  $Res call({Coord coord, Wind wind, Weather weather, Description description});
+  $Res call(
+      {@HiveField(0) String timestamp,
+      @HiveField(1) String name,
+      @HiveField(2) Coord coord,
+      @HiveField(3) Wind wind,
+      @HiveField(4) Weather weather,
+      @HiveField(5) Description description});
 
   @override
   $CoordCopyWith<$Res> get coord;
@@ -149,12 +192,22 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? timestamp = freezed,
+    Object? name = freezed,
     Object? coord = freezed,
     Object? wind = freezed,
     Object? weather = freezed,
     Object? description = freezed,
   }) {
     return _then(_Forecast(
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       coord: coord == freezed
           ? _value.coord
           : coord // ignore: cast_nullable_to_non_nullable
@@ -176,33 +229,54 @@ class __$ForecastCopyWithImpl<$Res> extends _$ForecastCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
+@HiveType(typeId: 0, adapterName: 'ForecastHiveAdapter')
 class _$_Forecast extends _Forecast {
   _$_Forecast(
-      {required this.coord,
-      required this.wind,
-      required this.weather,
-      required this.description})
+      {@HiveField(0) required this.timestamp,
+      @HiveField(1) required this.name,
+      @HiveField(2) required this.coord,
+      @HiveField(3) required this.wind,
+      @HiveField(4) required this.weather,
+      @HiveField(5) required this.description})
       : super._();
 
+  factory _$_Forecast.fromJson(Map<String, dynamic> json) =>
+      _$_$_ForecastFromJson(json);
+
   @override
+  @HiveField(0)
+  final String timestamp;
+  @override
+  @HiveField(1)
+  final String name;
+  @override
+  @HiveField(2)
   final Coord coord;
   @override
+  @HiveField(3)
   final Wind wind;
   @override
+  @HiveField(4)
   final Weather weather;
   @override
+  @HiveField(5)
   final Description description;
 
   @override
   String toString() {
-    return 'Forecast(coord: $coord, wind: $wind, weather: $weather, description: $description)';
+    return 'Forecast(timestamp: $timestamp, name: $name, coord: $coord, wind: $wind, weather: $weather, description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Forecast &&
+            (identical(other.timestamp, timestamp) ||
+                const DeepCollectionEquality()
+                    .equals(other.timestamp, timestamp)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.coord, coord) ||
                 const DeepCollectionEquality().equals(other.coord, coord)) &&
             (identical(other.wind, wind) ||
@@ -218,6 +292,8 @@ class _$_Forecast extends _Forecast {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(timestamp) ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(coord) ^
       const DeepCollectionEquality().hash(wind) ^
       const DeepCollectionEquality().hash(weather) ^
@@ -227,23 +303,42 @@ class _$_Forecast extends _Forecast {
   @override
   _$ForecastCopyWith<_Forecast> get copyWith =>
       __$ForecastCopyWithImpl<_Forecast>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ForecastToJson(this);
+  }
 }
 
 abstract class _Forecast extends Forecast {
   factory _Forecast(
-      {required Coord coord,
-      required Wind wind,
-      required Weather weather,
-      required Description description}) = _$_Forecast;
+      {@HiveField(0) required String timestamp,
+      @HiveField(1) required String name,
+      @HiveField(2) required Coord coord,
+      @HiveField(3) required Wind wind,
+      @HiveField(4) required Weather weather,
+      @HiveField(5) required Description description}) = _$_Forecast;
   _Forecast._() : super._();
 
+  factory _Forecast.fromJson(Map<String, dynamic> json) = _$_Forecast.fromJson;
+
   @override
+  @HiveField(0)
+  String get timestamp => throw _privateConstructorUsedError;
+  @override
+  @HiveField(1)
+  String get name => throw _privateConstructorUsedError;
+  @override
+  @HiveField(2)
   Coord get coord => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   Wind get wind => throw _privateConstructorUsedError;
   @override
+  @HiveField(4)
   Weather get weather => throw _privateConstructorUsedError;
   @override
+  @HiveField(5)
   Description get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

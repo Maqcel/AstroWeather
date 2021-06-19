@@ -1,20 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 
 part 'weather.freezed.dart';
 part 'weather.g.dart';
 
 @freezed
 class Weather with _$Weather {
+  @HiveType(typeId: 3, adapterName: 'WeatherHiveAdapter')
   factory Weather({
-    required final double temp,
+    @HiveField(0) required final double temp,
     // ignore: non_constant_identifier_names
-    required final double feels_like,
+    @HiveField(1) required final double feels_like,
     // ignore: non_constant_identifier_names
-    required final double temp_min,
+    @HiveField(2) required final double temp_min,
     // ignore: non_constant_identifier_names
-    required final double temp_max,
-    required final int pressure,
-    required final int humidity,
+    @HiveField(3) required final double temp_max,
+    @HiveField(4) required final int pressure,
+    @HiveField(5) required final int humidity,
   }) = _Weather;
 
   const Weather._();

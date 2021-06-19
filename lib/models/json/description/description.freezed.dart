@@ -21,9 +21,9 @@ class _$DescriptionTearOff {
   const _$DescriptionTearOff();
 
   _Description call(
-      {required String main,
-      required String description,
-      required String icon}) {
+      {@HiveField(0) required String main,
+      @HiveField(1) required String description,
+      @HiveField(2) required String icon}) {
     return _Description(
       main: main,
       description: description,
@@ -41,8 +41,11 @@ const $Description = _$DescriptionTearOff();
 
 /// @nodoc
 mixin _$Description {
+  @HiveField(0)
   String get main => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get description => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get icon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,7 +59,10 @@ abstract class $DescriptionCopyWith<$Res> {
   factory $DescriptionCopyWith(
           Description value, $Res Function(Description) then) =
       _$DescriptionCopyWithImpl<$Res>;
-  $Res call({String main, String description, String icon});
+  $Res call(
+      {@HiveField(0) String main,
+      @HiveField(1) String description,
+      @HiveField(2) String icon});
 }
 
 /// @nodoc
@@ -97,7 +103,10 @@ abstract class _$DescriptionCopyWith<$Res>
           _Description value, $Res Function(_Description) then) =
       __$DescriptionCopyWithImpl<$Res>;
   @override
-  $Res call({String main, String description, String icon});
+  $Res call(
+      {@HiveField(0) String main,
+      @HiveField(1) String description,
+      @HiveField(2) String icon});
 }
 
 /// @nodoc
@@ -135,19 +144,25 @@ class __$DescriptionCopyWithImpl<$Res> extends _$DescriptionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 4, adapterName: 'DescriptionHiveAdapter')
 class _$_Description extends _Description {
   _$_Description(
-      {required this.main, required this.description, required this.icon})
+      {@HiveField(0) required this.main,
+      @HiveField(1) required this.description,
+      @HiveField(2) required this.icon})
       : super._();
 
   factory _$_Description.fromJson(Map<String, dynamic> json) =>
       _$_$_DescriptionFromJson(json);
 
   @override
+  @HiveField(0)
   final String main;
   @override
+  @HiveField(1)
   final String description;
   @override
+  @HiveField(2)
   final String icon;
 
   @override
@@ -188,19 +203,22 @@ class _$_Description extends _Description {
 
 abstract class _Description extends Description {
   factory _Description(
-      {required String main,
-      required String description,
-      required String icon}) = _$_Description;
+      {@HiveField(0) required String main,
+      @HiveField(1) required String description,
+      @HiveField(2) required String icon}) = _$_Description;
   _Description._() : super._();
 
   factory _Description.fromJson(Map<String, dynamic> json) =
       _$_Description.fromJson;
 
   @override
+  @HiveField(0)
   String get main => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String get description => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   String get icon => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

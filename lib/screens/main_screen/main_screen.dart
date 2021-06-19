@@ -50,7 +50,9 @@ class _MainScreenState extends State<MainScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(Constants.defaultPadding),
-                      child: Text(state.name),
+                      child: Text(
+                        '${state.name} from: ${state.forecast!.timestamp}',
+                      ),
                     ),
                     Expanded(
                       flex: 1,

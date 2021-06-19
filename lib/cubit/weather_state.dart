@@ -15,7 +15,7 @@ class WeatherState with _$WeatherState {
 
   factory WeatherState.init({required String name}) => WeatherState(
         forecast: null,
-        isLoading: false,
+        isLoading: true,
         isConnected: false,
         name: name,
         isFetched: false,
