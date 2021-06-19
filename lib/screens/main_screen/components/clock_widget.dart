@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '/constants.dart';
+
 class ClockWidget extends StatefulWidget {
   @override
   _ClockWidgetState createState() => _ClockWidgetState();
@@ -21,7 +23,7 @@ class _ClockWidgetState extends State<ClockWidget> {
   }
 
   String _formatDateTime(DateTime dateTime) {
-    return DateFormat('MM/dd/yyyy hh:mm:ss').format(dateTime);
+    return DateFormat(Constants.dateTimeFormat).format(dateTime);
   }
 
   @override

@@ -248,6 +248,383 @@ abstract class CityNotFoundFailure implements RequestException {
 }
 
 /// @nodoc
+class _$HiveExceptionTearOff {
+  const _$HiveExceptionTearOff();
+
+  NoDataFoundException noDataFound() {
+    return const NoDataFoundException();
+  }
+}
+
+/// @nodoc
+const $HiveException = _$HiveExceptionTearOff();
+
+/// @nodoc
+mixin _$HiveException {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noDataFound,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noDataFound,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoDataFoundException value) noDataFound,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoDataFoundException value)? noDataFound,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HiveExceptionCopyWith<$Res> {
+  factory $HiveExceptionCopyWith(
+          HiveException value, $Res Function(HiveException) then) =
+      _$HiveExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$HiveExceptionCopyWithImpl<$Res>
+    implements $HiveExceptionCopyWith<$Res> {
+  _$HiveExceptionCopyWithImpl(this._value, this._then);
+
+  final HiveException _value;
+  // ignore: unused_field
+  final $Res Function(HiveException) _then;
+}
+
+/// @nodoc
+abstract class $NoDataFoundExceptionCopyWith<$Res> {
+  factory $NoDataFoundExceptionCopyWith(NoDataFoundException value,
+          $Res Function(NoDataFoundException) then) =
+      _$NoDataFoundExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoDataFoundExceptionCopyWithImpl<$Res>
+    extends _$HiveExceptionCopyWithImpl<$Res>
+    implements $NoDataFoundExceptionCopyWith<$Res> {
+  _$NoDataFoundExceptionCopyWithImpl(
+      NoDataFoundException _value, $Res Function(NoDataFoundException) _then)
+      : super(_value, (v) => _then(v as NoDataFoundException));
+
+  @override
+  NoDataFoundException get _value => super._value as NoDataFoundException;
+}
+
+/// @nodoc
+
+class _$NoDataFoundException implements NoDataFoundException {
+  const _$NoDataFoundException();
+
+  @override
+  String toString() {
+    return 'HiveException.noDataFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoDataFoundException);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noDataFound,
+  }) {
+    return noDataFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noDataFound,
+    required TResult orElse(),
+  }) {
+    if (noDataFound != null) {
+      return noDataFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoDataFoundException value) noDataFound,
+  }) {
+    return noDataFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoDataFoundException value)? noDataFound,
+    required TResult orElse(),
+  }) {
+    if (noDataFound != null) {
+      return noDataFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoDataFoundException implements HiveException {
+  const factory NoDataFoundException() = _$NoDataFoundException;
+}
+
+/// @nodoc
+class _$InternetExceptionTearOff {
+  const _$InternetExceptionTearOff();
+
+  NoConnectionFoundException noConnection() {
+    return const NoConnectionFoundException();
+  }
+
+  ConnectionFoundException restoredConnection() {
+    return const ConnectionFoundException();
+  }
+}
+
+/// @nodoc
+const $InternetException = _$InternetExceptionTearOff();
+
+/// @nodoc
+mixin _$InternetException {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noConnection,
+    required TResult Function() restoredConnection,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? restoredConnection,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoConnectionFoundException value) noConnection,
+    required TResult Function(ConnectionFoundException value)
+        restoredConnection,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoConnectionFoundException value)? noConnection,
+    TResult Function(ConnectionFoundException value)? restoredConnection,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $InternetExceptionCopyWith<$Res> {
+  factory $InternetExceptionCopyWith(
+          InternetException value, $Res Function(InternetException) then) =
+      _$InternetExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$InternetExceptionCopyWithImpl<$Res>
+    implements $InternetExceptionCopyWith<$Res> {
+  _$InternetExceptionCopyWithImpl(this._value, this._then);
+
+  final InternetException _value;
+  // ignore: unused_field
+  final $Res Function(InternetException) _then;
+}
+
+/// @nodoc
+abstract class $NoConnectionFoundExceptionCopyWith<$Res> {
+  factory $NoConnectionFoundExceptionCopyWith(NoConnectionFoundException value,
+          $Res Function(NoConnectionFoundException) then) =
+      _$NoConnectionFoundExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoConnectionFoundExceptionCopyWithImpl<$Res>
+    extends _$InternetExceptionCopyWithImpl<$Res>
+    implements $NoConnectionFoundExceptionCopyWith<$Res> {
+  _$NoConnectionFoundExceptionCopyWithImpl(NoConnectionFoundException _value,
+      $Res Function(NoConnectionFoundException) _then)
+      : super(_value, (v) => _then(v as NoConnectionFoundException));
+
+  @override
+  NoConnectionFoundException get _value =>
+      super._value as NoConnectionFoundException;
+}
+
+/// @nodoc
+
+class _$NoConnectionFoundException implements NoConnectionFoundException {
+  const _$NoConnectionFoundException();
+
+  @override
+  String toString() {
+    return 'InternetException.noConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoConnectionFoundException);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noConnection,
+    required TResult Function() restoredConnection,
+  }) {
+    return noConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? restoredConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoConnectionFoundException value) noConnection,
+    required TResult Function(ConnectionFoundException value)
+        restoredConnection,
+  }) {
+    return noConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoConnectionFoundException value)? noConnection,
+    TResult Function(ConnectionFoundException value)? restoredConnection,
+    required TResult orElse(),
+  }) {
+    if (noConnection != null) {
+      return noConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoConnectionFoundException implements InternetException {
+  const factory NoConnectionFoundException() = _$NoConnectionFoundException;
+}
+
+/// @nodoc
+abstract class $ConnectionFoundExceptionCopyWith<$Res> {
+  factory $ConnectionFoundExceptionCopyWith(ConnectionFoundException value,
+          $Res Function(ConnectionFoundException) then) =
+      _$ConnectionFoundExceptionCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ConnectionFoundExceptionCopyWithImpl<$Res>
+    extends _$InternetExceptionCopyWithImpl<$Res>
+    implements $ConnectionFoundExceptionCopyWith<$Res> {
+  _$ConnectionFoundExceptionCopyWithImpl(ConnectionFoundException _value,
+      $Res Function(ConnectionFoundException) _then)
+      : super(_value, (v) => _then(v as ConnectionFoundException));
+
+  @override
+  ConnectionFoundException get _value =>
+      super._value as ConnectionFoundException;
+}
+
+/// @nodoc
+
+class _$ConnectionFoundException implements ConnectionFoundException {
+  const _$ConnectionFoundException();
+
+  @override
+  String toString() {
+    return 'InternetException.restoredConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ConnectionFoundException);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() noConnection,
+    required TResult Function() restoredConnection,
+  }) {
+    return restoredConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? noConnection,
+    TResult Function()? restoredConnection,
+    required TResult orElse(),
+  }) {
+    if (restoredConnection != null) {
+      return restoredConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NoConnectionFoundException value) noConnection,
+    required TResult Function(ConnectionFoundException value)
+        restoredConnection,
+  }) {
+    return restoredConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NoConnectionFoundException value)? noConnection,
+    TResult Function(ConnectionFoundException value)? restoredConnection,
+    required TResult orElse(),
+  }) {
+    if (restoredConnection != null) {
+      return restoredConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConnectionFoundException implements InternetException {
+  const factory ConnectionFoundException() = _$ConnectionFoundException;
+}
+
+/// @nodoc
 class _$ValueIsValidTearOff {
   const _$ValueIsValidTearOff();
 

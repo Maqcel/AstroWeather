@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
+import '/config/exceptions/exceptions.dart';
 import '/config/injection/injection.dart';
 import '/constants.dart';
 import '/cubit/weather_cubit.dart';
@@ -16,11 +17,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final WeatherCubit _weatherCubit = WeatherCubit(getIt.get());
-  bool widgetConnection = true;
 
   @override
   void initState() {
     _weatherCubit.startFetching();
+    _weatherCubit.isForecastStoredLocally();
     super.initState();
   }
 
@@ -96,26 +97,35 @@ class _MainScreenState extends State<MainScreen> {
                 );
         },
         listener: (context, state) {
-          if (!state.isConnected) {
+          if (state.validator == HiveException.noDataFound()) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  'No internet connection!\nWaiting with reconnect with last fetched forecast!',
+                  state.validator.getString(),
+                ),
+              ),
+            );
+            _weatherCubit.clearErrorState();
+          }
+          if (state.validator == InternetException.noConnection()) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  state.validator.getString(),
                 ),
               ),
             );
             _weatherCubit.waitForConnection();
-            widgetConnection = false;
           }
-          if (!widgetConnection && state.isConnected) {
+          if (state.validator == InternetException.restoredConnection()) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  'Restored connection!\nFetching new forecasts!',
+                  state.validator.getString(),
                 ),
               ),
             );
-            widgetConnection = true;
+            _weatherCubit.clearErrorState();
           }
         },
       ),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:get_it/get_it.dart';
@@ -8,6 +9,7 @@ import 'package:injectable/injectable.dart';
 import 'package:intl/intl.dart';
 
 import '/config/api_key.dart';
+import '/constants.dart';
 import '/config/exceptions/exceptions.dart';
 import '/models/forecast/forecast.dart';
 import '/models/json/coord/coord.dart';
@@ -42,18 +44,27 @@ class WeatherRepository {
         responseBody['weather'][0],
       );
       Forecast forecast = Forecast(
-        timestamp: DateFormat('MM/dd/yyyy hh:mm:ss').format(DateTime.now()),
+        timestamp: DateFormat(Constants.dateTimeFormat).format(DateTime.now()),
         name: name,
         coord: coord,
         weather: weather,
         wind: wind,
         description: description,
       );
-      Box<Forecast> hiveDb = Hive.box<Forecast>('forecast');
-      hiveDb.put('weather', forecast);
+      Box<Forecast> hiveDb = Hive.box<Forecast>(Constants.hiveForecastsBoxKey);
+      hiveDb.put(Constants.lastForecastKey, forecast);
       return right(forecast);
     } on RequestException catch (e) {
       return left(e);
+    } on SocketException catch (_) {
+      return left(const RequestException.requestFailure());
     }
+  }
+
+  Future<Either<AppExceptions, Forecast>> loadLastForecast() async {
+    Box<Forecast> hiveDb = Hive.box<Forecast>(Constants.hiveForecastsBoxKey);
+    Forecast? lastForecast = hiveDb.get(Constants.lastForecastKey);
+    if (lastForecast != null) return right(lastForecast);
+    return left(const HiveException.noDataFound());
   }
 }

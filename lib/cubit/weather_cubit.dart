@@ -19,6 +19,24 @@ class WeatherCubit extends Cubit<WeatherState> {
 
   WeatherCubit(this._weatherRepository) : super(WeatherState.init(name: ''));
 
+  Future<void> isForecastStoredLocally() async {
+    final result = await _weatherRepository.loadLastForecast();
+    result.fold(
+      (fail) => emit(
+        state.copyWith(
+          validator: fail,
+        ),
+      ),
+      (success) => emit(
+        state.copyWith(
+          isLoading: false,
+          name: success.name,
+          forecast: success,
+        ),
+      ),
+    );
+  }
+
   Future<bool> _checkConnection() async {
     try {
       final result = await InternetAddress.lookup('google.com');
@@ -34,14 +52,18 @@ class WeatherCubit extends Cubit<WeatherState> {
   Future<void> startFetching() async {
     final bool isConnected = await _checkConnection();
     if (!isConnected) {
-      emit(state.copyWith(isConnected: false));
+      emit(
+        state.copyWith(validator: const InternetException.noConnection()),
+      );
     }
     _fetching = Timer.periodic(
-      Duration(seconds: 15),
+      Duration(seconds: 6),
       (timer) async {
         final bool isConnected = await _checkConnection();
         if (!isConnected) {
-          emit(state.copyWith(isConnected: false));
+          emit(
+            state.copyWith(validator: const InternetException.noConnection()),
+          );
           timer.cancel();
         }
         final result = await _weatherRepository.requestCurrentForecast(
@@ -71,7 +93,10 @@ class WeatherCubit extends Cubit<WeatherState> {
         if (isConnected) {
           timer.cancel();
           startFetching();
-          emit(state.copyWith(isConnected: true));
+          emit(
+            state.copyWith(
+                validator: const InternetException.restoredConnection()),
+          );
         }
       },
     );

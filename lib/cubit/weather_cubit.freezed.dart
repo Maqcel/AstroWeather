@@ -19,14 +19,12 @@ class _$WeatherStateTearOff {
   _WeatherState call(
       {required String name,
       required bool isLoading,
-      required bool isConnected,
       required Forecast? forecast,
       required AppExceptions validator,
       required bool isFetched}) {
     return _WeatherState(
       name: name,
       isLoading: isLoading,
-      isConnected: isConnected,
       forecast: forecast,
       validator: validator,
       isFetched: isFetched,
@@ -41,7 +39,6 @@ const $WeatherState = _$WeatherStateTearOff();
 mixin _$WeatherState {
   String get name => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  bool get isConnected => throw _privateConstructorUsedError;
   Forecast? get forecast => throw _privateConstructorUsedError;
   AppExceptions get validator => throw _privateConstructorUsedError;
   bool get isFetched => throw _privateConstructorUsedError;
@@ -59,7 +56,6 @@ abstract class $WeatherStateCopyWith<$Res> {
   $Res call(
       {String name,
       bool isLoading,
-      bool isConnected,
       Forecast? forecast,
       AppExceptions validator,
       bool isFetched});
@@ -79,7 +75,6 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
   $Res call({
     Object? name = freezed,
     Object? isLoading = freezed,
-    Object? isConnected = freezed,
     Object? forecast = freezed,
     Object? validator = freezed,
     Object? isFetched = freezed,
@@ -92,10 +87,6 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isConnected: isConnected == freezed
-          ? _value.isConnected
-          : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
       forecast: forecast == freezed
           ? _value.forecast
@@ -134,7 +125,6 @@ abstract class _$WeatherStateCopyWith<$Res>
   $Res call(
       {String name,
       bool isLoading,
-      bool isConnected,
       Forecast? forecast,
       AppExceptions validator,
       bool isFetched});
@@ -157,7 +147,6 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? isLoading = freezed,
-    Object? isConnected = freezed,
     Object? forecast = freezed,
     Object? validator = freezed,
     Object? isFetched = freezed,
@@ -170,10 +159,6 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isConnected: isConnected == freezed
-          ? _value.isConnected
-          : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
       forecast: forecast == freezed
           ? _value.forecast
@@ -197,7 +182,6 @@ class _$_WeatherState extends _WeatherState {
   const _$_WeatherState(
       {required this.name,
       required this.isLoading,
-      required this.isConnected,
       required this.forecast,
       required this.validator,
       required this.isFetched})
@@ -208,8 +192,6 @@ class _$_WeatherState extends _WeatherState {
   @override
   final bool isLoading;
   @override
-  final bool isConnected;
-  @override
   final Forecast? forecast;
   @override
   final AppExceptions validator;
@@ -218,7 +200,7 @@ class _$_WeatherState extends _WeatherState {
 
   @override
   String toString() {
-    return 'WeatherState(name: $name, isLoading: $isLoading, isConnected: $isConnected, forecast: $forecast, validator: $validator, isFetched: $isFetched)';
+    return 'WeatherState(name: $name, isLoading: $isLoading, forecast: $forecast, validator: $validator, isFetched: $isFetched)';
   }
 
   @override
@@ -230,9 +212,6 @@ class _$_WeatherState extends _WeatherState {
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
-            (identical(other.isConnected, isConnected) ||
-                const DeepCollectionEquality()
-                    .equals(other.isConnected, isConnected)) &&
             (identical(other.forecast, forecast) ||
                 const DeepCollectionEquality()
                     .equals(other.forecast, forecast)) &&
@@ -249,7 +228,6 @@ class _$_WeatherState extends _WeatherState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(isConnected) ^
       const DeepCollectionEquality().hash(forecast) ^
       const DeepCollectionEquality().hash(validator) ^
       const DeepCollectionEquality().hash(isFetched);
@@ -264,7 +242,6 @@ abstract class _WeatherState extends WeatherState {
   const factory _WeatherState(
       {required String name,
       required bool isLoading,
-      required bool isConnected,
       required Forecast? forecast,
       required AppExceptions validator,
       required bool isFetched}) = _$_WeatherState;
@@ -274,8 +251,6 @@ abstract class _WeatherState extends WeatherState {
   String get name => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
-  @override
-  bool get isConnected => throw _privateConstructorUsedError;
   @override
   Forecast? get forecast => throw _privateConstructorUsedError;
   @override
