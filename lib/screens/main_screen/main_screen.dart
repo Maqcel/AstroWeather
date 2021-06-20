@@ -120,7 +120,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
             );
-            _weatherCubit.waitForConnection();
+            _weatherCubit.clearErrorState();
           }
           if (state.validator == const RequestException.cityNotFound() ||
               state.validator == const RequestException.requestFailure()) {

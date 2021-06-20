@@ -76,6 +76,7 @@ class WeatherCubit extends Cubit<WeatherState> {
   }) async {
     final bool isConnected = await _checkConnection();
     if (!isConnected) {
+      waitForConnection();
       emit(
         state.copyWith(validator: const InternetException.noConnection()),
       );
@@ -85,6 +86,7 @@ class WeatherCubit extends Cubit<WeatherState> {
       (timer) async {
         final bool isConnected = await _checkConnection();
         if (!isConnected) {
+          waitForConnection();
           emit(
             state.copyWith(validator: const InternetException.noConnection()),
           );
