@@ -23,7 +23,7 @@ class _$WindTearOff {
   _Wind call(
       {@HiveField(0) required double speed,
       @HiveField(1) required int deg,
-      @HiveField(2) required double gust}) {
+      @HiveField(2) required double? gust}) {
     return _Wind(
       speed: speed,
       deg: deg,
@@ -46,7 +46,7 @@ mixin _$Wind {
   @HiveField(1)
   int get deg => throw _privateConstructorUsedError;
   @HiveField(2)
-  double get gust => throw _privateConstructorUsedError;
+  double? get gust => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,7 +60,7 @@ abstract class $WindCopyWith<$Res> {
   $Res call(
       {@HiveField(0) double speed,
       @HiveField(1) int deg,
-      @HiveField(2) double gust});
+      @HiveField(2) double? gust});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class _$WindCopyWithImpl<$Res> implements $WindCopyWith<$Res> {
       gust: gust == freezed
           ? _value.gust
           : gust // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
@@ -102,7 +102,7 @@ abstract class _$WindCopyWith<$Res> implements $WindCopyWith<$Res> {
   $Res call(
       {@HiveField(0) double speed,
       @HiveField(1) int deg,
-      @HiveField(2) double gust});
+      @HiveField(2) double? gust});
 }
 
 /// @nodoc
@@ -132,7 +132,7 @@ class __$WindCopyWithImpl<$Res> extends _$WindCopyWithImpl<$Res>
       gust: gust == freezed
           ? _value.gust
           : gust // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
@@ -158,7 +158,7 @@ class _$_Wind extends _Wind {
   final int deg;
   @override
   @HiveField(2)
-  final double gust;
+  final double? gust;
 
   @override
   String toString() {
@@ -199,7 +199,7 @@ abstract class _Wind extends Wind {
   factory _Wind(
       {@HiveField(0) required double speed,
       @HiveField(1) required int deg,
-      @HiveField(2) required double gust}) = _$_Wind;
+      @HiveField(2) required double? gust}) = _$_Wind;
   _Wind._() : super._();
 
   factory _Wind.fromJson(Map<String, dynamic> json) = _$_Wind.fromJson;
@@ -212,7 +212,7 @@ abstract class _Wind extends Wind {
   int get deg => throw _privateConstructorUsedError;
   @override
   @HiveField(2)
-  double get gust => throw _privateConstructorUsedError;
+  double? get gust => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$WindCopyWith<_Wind> get copyWith => throw _privateConstructorUsedError;

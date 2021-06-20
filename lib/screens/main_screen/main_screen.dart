@@ -21,7 +21,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    _weatherCubit.startFetching();
     _weatherCubit.isForecastStoredLocally();
     super.initState();
   }
@@ -55,7 +54,7 @@ class _MainScreenState extends State<MainScreen> {
                     Padding(
                       padding: const EdgeInsets.all(Constants.defaultPadding),
                       child: Text(
-                        '${state.name} from: ${state.forecast!.timestamp}\nUnits: ${state.forecast!.units}',
+                        '${state.forecast!.name} from: ${state.forecast!.timestamp}\nUnits: ${state.forecast!.units}',
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -100,9 +99,10 @@ class _MainScreenState extends State<MainScreen> {
                 );
         },
         listener: (context, state) {
-          if (state.validator == HiveException.noDataFound()) {
+          if (state.validator == const HiveException.noDataFound()) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
+                behavior: SnackBarBehavior.floating,
                 content: Text(
                   state.validator.getString(),
                 ),
@@ -110,9 +110,11 @@ class _MainScreenState extends State<MainScreen> {
             );
             _weatherCubit.clearErrorState();
           }
-          if (state.validator == InternetException.noConnection()) {
+          if (state.validator == const InternetException.noConnection() ||
+              state.validator == const InternetException.restoredConnection()) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
+                behavior: SnackBarBehavior.floating,
                 content: Text(
                   state.validator.getString(),
                 ),
@@ -120,9 +122,22 @@ class _MainScreenState extends State<MainScreen> {
             );
             _weatherCubit.waitForConnection();
           }
-          if (state.validator == InternetException.restoredConnection()) {
+          if (state.validator == const RequestException.cityNotFound() ||
+              state.validator == const RequestException.requestFailure()) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
+                behavior: SnackBarBehavior.floating,
+                content: Text(
+                  state.validator.getString(),
+                ),
+              ),
+            );
+            _weatherCubit.clearErrorState();
+          }
+          if (state.validator == const DataChange.dataChange()) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                behavior: SnackBarBehavior.floating,
                 content: Text(
                   state.validator.getString(),
                 ),

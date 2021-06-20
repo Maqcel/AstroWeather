@@ -20,6 +20,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   TextEditingController _cityController = TextEditingController();
   ChosenUnits _units = ChosenUnits.metric;
+  bool isValid = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,7 @@ class _SettingsState extends State<Settings> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _cityController,
               validator: (value) {
+                isValid = false;
                 if (value!.isEmpty) {
                   return 'You need to enter the city';
                 } else if (value.contains(RegExp(r'[0-9]'))) {
@@ -42,6 +44,7 @@ class _SettingsState extends State<Settings> {
                 } else if (value.length < 3) {
                   return 'Cities should have length of at least\n 3 characters';
                 }
+                isValid = true;
                 return null;
               },
             ),
@@ -78,7 +81,23 @@ class _SettingsState extends State<Settings> {
           ),
           SizedBox(height: Constants.defaultPadding),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+              if (isValid) {
+                return widget.weatherCubit.changeCityAndUnit(
+                  name: _cityController.value.text,
+                  units: _units == ChosenUnits.metric ? 'metric' : 'imperial',
+                );
+              }
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  behavior: SnackBarBehavior.floating,
+                  content: Text(
+                    'City is not valid!',
+                  ),
+                ),
+              );
+            },
             icon: Icon(Icons.published_with_changes_outlined),
             iconSize: Constants.imageSize / 2,
           ),

@@ -17,6 +17,9 @@ class GeneralInfo extends StatelessWidget {
     String temp = state.forecast!.units == 'metric'
         ? Constants.degreeCelsius
         : Constants.degreeFahrenheit;
+    String shouldIncludeGust = forecast.wind.gust != null
+        ? 'Gust: ${forecast.wind.gust!.toStringAsFixed(2)} knots'
+        : '';
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,11 +28,11 @@ class GeneralInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Coordinates:\nLon: ${forecast.coord.lon}\', Lat: ${forecast.coord.lat}\'\n',
+              'Coordinates:\nLon: ${forecast.coord.lon.toStringAsFixed(2)}\', Lat: ${forecast.coord.lat.toStringAsFixed(2)}\'\n',
               textAlign: TextAlign.center,
             ),
             Text(
-              'Wind:\nSpeed: ${forecast.wind.speed}$speed, Degrees: ${forecast.wind.deg}°,\n Gust: ${forecast.wind.gust} knots',
+              'Wind:\nSpeed: ${forecast.wind.speed.toStringAsFixed(2)}$speed, Degrees: ${forecast.wind.deg}°,\n $shouldIncludeGust',
               textAlign: TextAlign.center,
             ),
           ],
@@ -50,7 +53,7 @@ class GeneralInfo extends StatelessWidget {
           ],
         ),
         Text(
-          'Temp:\n${forecast.weather.temp}$temp',
+          'Temp:\n${forecast.weather.temp.toStringAsFixed(2)}$temp',
           textAlign: TextAlign.center,
         ),
       ],

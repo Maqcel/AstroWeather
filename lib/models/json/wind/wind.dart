@@ -10,7 +10,7 @@ class Wind with _$Wind {
   factory Wind({
     @HiveField(0) required final double speed,
     @HiveField(1) required final int deg,
-    @HiveField(2) required final double gust,
+    @HiveField(2) required final double? gust,
   }) = _Wind;
 
   const Wind._();

@@ -19,7 +19,7 @@ class WindHiveAdapter extends TypeAdapter<_$_Wind> {
     return _$_Wind(
       speed: fields[0] as double,
       deg: fields[1] as int,
-      gust: fields[2] as double,
+      gust: fields[2] as double?,
     );
   }
 
@@ -54,7 +54,7 @@ _$_Wind _$_$_WindFromJson(Map<String, dynamic> json) {
   return _$_Wind(
     speed: (json['speed'] as num).toDouble(),
     deg: json['deg'] as int,
-    gust: (json['gust'] as num).toDouble(),
+    gust: (json['gust'] as num?)?.toDouble(),
   );
 }
 

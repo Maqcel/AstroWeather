@@ -17,23 +17,44 @@ class WeatherCubit extends Cubit<WeatherState> {
   late Timer _fetching;
   late Timer _restoring;
 
-  WeatherCubit(this._weatherRepository) : super(WeatherState.init(name: ''));
+  WeatherCubit(this._weatherRepository)
+      : super(WeatherState.init(name: 'Łódź'));
+
+  void changeCityAndUnit({
+    required String name,
+    required String units,
+  }) {
+    _fetching.cancel();
+    startFetching(name: name, units: units);
+    emit(state.copyWith(
+      name: name,
+      unit: units,
+      validator: const DataChange.dataChange(),
+    ));
+  }
 
   Future<void> isForecastStoredLocally() async {
     final result = await _weatherRepository.loadLastForecast();
     result.fold(
-      (fail) => emit(
-        state.copyWith(
-          validator: fail,
-        ),
-      ),
-      (success) => emit(
-        state.copyWith(
-          isLoading: false,
-          name: success.name,
-          forecast: success,
-        ),
-      ),
+      (fail) {
+        startFetching(name: state.name, units: state.unit);
+        emit(
+          state.copyWith(
+            validator: fail,
+          ),
+        );
+      },
+      (success) {
+        startFetching(name: success.name, units: success.units);
+        emit(
+          state.copyWith(
+            isLoading: false,
+            name: success.name,
+            forecast: success,
+            unit: success.units,
+          ),
+        );
+      },
     );
   }
 
@@ -49,7 +70,10 @@ class WeatherCubit extends Cubit<WeatherState> {
     }
   }
 
-  Future<void> startFetching() async {
+  Future<void> startFetching({
+    required String name,
+    required String units,
+  }) async {
     final bool isConnected = await _checkConnection();
     if (!isConnected) {
       emit(
@@ -67,8 +91,8 @@ class WeatherCubit extends Cubit<WeatherState> {
           timer.cancel();
         }
         final result = await _weatherRepository.requestCurrentForecast(
-          name: 'Łódź',
-          unit: 'metric',
+          name: name,
+          unit: units,
         );
         result.fold(
           (fail) => emit(state.copyWith(
@@ -78,7 +102,7 @@ class WeatherCubit extends Cubit<WeatherState> {
           (success) => emit(state.copyWith(
             forecast: success,
             isLoading: false,
-            name: 'Łódź',
+            name: name,
           )),
         );
       },
@@ -92,7 +116,7 @@ class WeatherCubit extends Cubit<WeatherState> {
         final bool isConnected = await _checkConnection();
         if (isConnected) {
           timer.cancel();
-          startFetching();
+          startFetching(name: state.name, units: state.unit);
           emit(
             state.copyWith(
                 validator: const InternetException.restoredConnection()),

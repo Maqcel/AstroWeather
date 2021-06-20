@@ -20,18 +20,18 @@ class AdditionalInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          'Temperature feels like:\n${forecast.weather.feels_like}$temp',
+          'Temperature feels like:\n${forecast.weather.feels_like.toStringAsFixed(2)}$temp',
           textAlign: TextAlign.center,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Temperature min:\n${forecast.weather.temp_min}$temp',
+              'Temperature min:\n${forecast.weather.temp_min.toStringAsFixed(2)}$temp',
               textAlign: TextAlign.center,
             ),
             Text(
-              'Temperature max:\n${forecast.weather.temp_max}$temp',
+              'Temperature max:\n${forecast.weather.temp_max.toStringAsFixed(2)}$temp',
               textAlign: TextAlign.center,
             ),
           ],

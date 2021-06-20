@@ -625,6 +625,141 @@ abstract class ConnectionFoundException implements InternetException {
 }
 
 /// @nodoc
+class _$DataChangeTearOff {
+  const _$DataChangeTearOff();
+
+  DataWillChange dataChange() {
+    return const DataWillChange();
+  }
+}
+
+/// @nodoc
+const $DataChange = _$DataChangeTearOff();
+
+/// @nodoc
+mixin _$DataChange {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() dataChange,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? dataChange,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DataWillChange value) dataChange,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataWillChange value)? dataChange,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DataChangeCopyWith<$Res> {
+  factory $DataChangeCopyWith(
+          DataChange value, $Res Function(DataChange) then) =
+      _$DataChangeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$DataChangeCopyWithImpl<$Res> implements $DataChangeCopyWith<$Res> {
+  _$DataChangeCopyWithImpl(this._value, this._then);
+
+  final DataChange _value;
+  // ignore: unused_field
+  final $Res Function(DataChange) _then;
+}
+
+/// @nodoc
+abstract class $DataWillChangeCopyWith<$Res> {
+  factory $DataWillChangeCopyWith(
+          DataWillChange value, $Res Function(DataWillChange) then) =
+      _$DataWillChangeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$DataWillChangeCopyWithImpl<$Res> extends _$DataChangeCopyWithImpl<$Res>
+    implements $DataWillChangeCopyWith<$Res> {
+  _$DataWillChangeCopyWithImpl(
+      DataWillChange _value, $Res Function(DataWillChange) _then)
+      : super(_value, (v) => _then(v as DataWillChange));
+
+  @override
+  DataWillChange get _value => super._value as DataWillChange;
+}
+
+/// @nodoc
+
+class _$DataWillChange implements DataWillChange {
+  const _$DataWillChange();
+
+  @override
+  String toString() {
+    return 'DataChange.dataChange()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DataWillChange);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() dataChange,
+  }) {
+    return dataChange();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? dataChange,
+    required TResult orElse(),
+  }) {
+    if (dataChange != null) {
+      return dataChange();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(DataWillChange value) dataChange,
+  }) {
+    return dataChange(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(DataWillChange value)? dataChange,
+    required TResult orElse(),
+  }) {
+    if (dataChange != null) {
+      return dataChange(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DataWillChange implements DataChange {
+  const factory DataWillChange() = _$DataWillChange;
+}
+
+/// @nodoc
 class _$ValueIsValidTearOff {
   const _$ValueIsValidTearOff();
 

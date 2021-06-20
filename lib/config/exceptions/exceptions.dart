@@ -23,6 +23,11 @@ class InternetException extends AppExceptions with _$InternetException {
 }
 
 @freezed
+class DataChange extends AppExceptions with _$DataChange {
+  const factory DataChange.dataChange() = DataWillChange;
+}
+
+@freezed
 class ValueIsValid extends AppExceptions with _$ValueIsValid {
   const factory ValueIsValid.valueIsValid() = ValidValue;
 }
@@ -45,6 +50,10 @@ extension ToString on AppExceptions {
             'No internet connection!\nWaiting for reconnect with last fetched forecast!',
         restoredConnection: () =>
             'Restored connection!\nFetching new forecasts!',
+      );
+    } else if (this is DataChange) {
+      return (this as DataChange).when(
+        dataChange: () => 'Started fetching for new data!',
       );
     } else {
       return 'Unhandled error ocurred, try again';
