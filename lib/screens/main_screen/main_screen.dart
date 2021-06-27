@@ -43,6 +43,25 @@ class _MainScreenState extends State<MainScreen> {
             ClockWidget(),
           ],
         ),
+        actions: [
+          BlocBuilder<WeatherCubit, WeatherState>(
+            bloc: _weatherCubit,
+            builder: (context, state) {
+              return !state.isLoading
+                  ? IconButton(
+                      onPressed: () {
+                        state.isFavorite
+                            ? _weatherCubit.removeFavoriteForecast()
+                            : _weatherCubit.addFavoriteForecast();
+                      },
+                      icon: state.isFavorite
+                          ? Icon(Icons.favorite_outlined)
+                          : Icon(Icons.favorite_outline_outlined),
+                    )
+                  : Container();
+            },
+          ),
+        ],
       ),
       body: BlocConsumer<WeatherCubit, WeatherState>(
         bloc: _weatherCubit,

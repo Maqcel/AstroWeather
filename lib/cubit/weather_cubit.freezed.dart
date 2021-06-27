@@ -22,7 +22,8 @@ class _$WeatherStateTearOff {
       required Forecast? forecast,
       required AppExceptions validator,
       required bool isFetched,
-      required String unit}) {
+      required String unit,
+      required bool isFavorite}) {
     return _WeatherState(
       name: name,
       isLoading: isLoading,
@@ -30,6 +31,7 @@ class _$WeatherStateTearOff {
       validator: validator,
       isFetched: isFetched,
       unit: unit,
+      isFavorite: isFavorite,
     );
   }
 }
@@ -45,6 +47,7 @@ mixin _$WeatherState {
   AppExceptions get validator => throw _privateConstructorUsedError;
   bool get isFetched => throw _privateConstructorUsedError;
   String get unit => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $WeatherStateCopyWith<WeatherState> get copyWith =>
@@ -62,7 +65,8 @@ abstract class $WeatherStateCopyWith<$Res> {
       Forecast? forecast,
       AppExceptions validator,
       bool isFetched,
-      String unit});
+      String unit,
+      bool isFavorite});
 
   $ForecastCopyWith<$Res>? get forecast;
 }
@@ -83,6 +87,7 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
     Object? validator = freezed,
     Object? isFetched = freezed,
     Object? unit = freezed,
+    Object? isFavorite = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -109,6 +114,10 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -137,7 +146,8 @@ abstract class _$WeatherStateCopyWith<$Res>
       Forecast? forecast,
       AppExceptions validator,
       bool isFetched,
-      String unit});
+      String unit,
+      bool isFavorite});
 
   @override
   $ForecastCopyWith<$Res>? get forecast;
@@ -161,6 +171,7 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
     Object? validator = freezed,
     Object? isFetched = freezed,
     Object? unit = freezed,
+    Object? isFavorite = freezed,
   }) {
     return _then(_WeatherState(
       name: name == freezed
@@ -187,6 +198,10 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
               as String,
+      isFavorite: isFavorite == freezed
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -200,7 +215,8 @@ class _$_WeatherState extends _WeatherState {
       required this.forecast,
       required this.validator,
       required this.isFetched,
-      required this.unit})
+      required this.unit,
+      required this.isFavorite})
       : super._();
 
   @override
@@ -215,10 +231,12 @@ class _$_WeatherState extends _WeatherState {
   final bool isFetched;
   @override
   final String unit;
+  @override
+  final bool isFavorite;
 
   @override
   String toString() {
-    return 'WeatherState(name: $name, isLoading: $isLoading, forecast: $forecast, validator: $validator, isFetched: $isFetched, unit: $unit)';
+    return 'WeatherState(name: $name, isLoading: $isLoading, forecast: $forecast, validator: $validator, isFetched: $isFetched, unit: $unit, isFavorite: $isFavorite)';
   }
 
   @override
@@ -240,7 +258,10 @@ class _$_WeatherState extends _WeatherState {
                 const DeepCollectionEquality()
                     .equals(other.isFetched, isFetched)) &&
             (identical(other.unit, unit) ||
-                const DeepCollectionEquality().equals(other.unit, unit)));
+                const DeepCollectionEquality().equals(other.unit, unit)) &&
+            (identical(other.isFavorite, isFavorite) ||
+                const DeepCollectionEquality()
+                    .equals(other.isFavorite, isFavorite)));
   }
 
   @override
@@ -251,7 +272,8 @@ class _$_WeatherState extends _WeatherState {
       const DeepCollectionEquality().hash(forecast) ^
       const DeepCollectionEquality().hash(validator) ^
       const DeepCollectionEquality().hash(isFetched) ^
-      const DeepCollectionEquality().hash(unit);
+      const DeepCollectionEquality().hash(unit) ^
+      const DeepCollectionEquality().hash(isFavorite);
 
   @JsonKey(ignore: true)
   @override
@@ -266,7 +288,8 @@ abstract class _WeatherState extends WeatherState {
       required Forecast? forecast,
       required AppExceptions validator,
       required bool isFetched,
-      required String unit}) = _$_WeatherState;
+      required String unit,
+      required bool isFavorite}) = _$_WeatherState;
   const _WeatherState._() : super._();
 
   @override
@@ -281,6 +304,8 @@ abstract class _WeatherState extends WeatherState {
   bool get isFetched => throw _privateConstructorUsedError;
   @override
   String get unit => throw _privateConstructorUsedError;
+  @override
+  bool get isFavorite => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$WeatherStateCopyWith<_WeatherState> get copyWith =>

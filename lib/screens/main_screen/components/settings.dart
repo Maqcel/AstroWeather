@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/constants.dart';
 import '/cubit/weather_cubit.dart';
+import '/models/forecast/forecast.dart';
 
 enum ChosenUnits {
   metric,
@@ -21,6 +22,13 @@ class _SettingsState extends State<Settings> {
   TextEditingController _cityController = TextEditingController();
   ChosenUnits _units = ChosenUnits.metric;
   bool isValid = false;
+  late Map<String, Forecast> favorites;
+
+  @override
+  void initState() {
+    favorites = widget.weatherCubit.getFavoritesMap();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +108,33 @@ class _SettingsState extends State<Settings> {
             },
             icon: Icon(Icons.published_with_changes_outlined),
             iconSize: Constants.imageSize / 2,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: Constants.defaultPadding,
+            ),
+            child: Text('Favorites'),
+          ),
+          SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: ListView.builder(
+                itemCount: favorites.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(favorites.values.elementAt(index).name),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        return widget.weatherCubit.changedPickedFavorite(
+                          forecast: favorites.values.elementAt(index),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ),

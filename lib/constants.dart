@@ -5,6 +5,7 @@ class Constants {
   static const double defaultPadding = 20.0;
   static const String lastForecastKey = 'weather';
   static const String hiveForecastsBoxKey = 'forecast';
+  static const String hiveFavoritesBoxKey = 'favorites';
   static const String dateTimeFormat = 'dd/MM/yyyy hh:mm:ss';
   static const String degreeCelsius = '°C';
   static const String degreeFahrenheit = '°F';

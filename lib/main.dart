@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '/constants.dart';
 import 'config/injection/injection.dart';
 import 'models/forecast/forecast.dart';
 import 'models/json/coord/coord.dart';
@@ -18,7 +19,8 @@ Future<void> main() async {
   Hive.registerAdapter(WindHiveAdapter());
   Hive.registerAdapter(WeatherHiveAdapter());
   Hive.registerAdapter(DescriptionHiveAdapter());
-  await Hive.openBox<Forecast>('forecast');
+  await Hive.openBox<Forecast>(Constants.hiveForecastsBoxKey);
+  await Hive.openBox<Map>(Constants.hiveFavoritesBoxKey);
   configureDependencies();
   runApp(MyApp());
 }

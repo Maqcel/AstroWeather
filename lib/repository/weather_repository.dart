@@ -20,8 +20,10 @@ import '/models/json/wind/wind.dart';
 @lazySingleton
 class WeatherRepository {
   late Forecast _currentForecast;
+  Map<String, Forecast> _favoritesMap = {};
 
   Forecast get getCurrentForecast => _currentForecast;
+  Map<String, Forecast> get getFavoritesMap => _favoritesMap;
 
   Future<Either<AppExceptions, Forecast>> requestCurrentForecast({
     required String name,
@@ -65,7 +67,30 @@ class WeatherRepository {
   Future<Either<AppExceptions, Forecast>> loadLastForecast() async {
     Box<Forecast> hiveDb = Hive.box<Forecast>(Constants.hiveForecastsBoxKey);
     Forecast? lastForecast = hiveDb.get(Constants.lastForecastKey);
+    Box<Map> hiveDbFav = Hive.box<Map>(Constants.hiveFavoritesBoxKey);
+    Map? data = hiveDbFav.get(Constants.hiveFavoritesBoxKey);
+    if (data == null) data = Map<String, Forecast>();
+    Map<String, Forecast> favoritesForecasts = data.cast<String, Forecast>();
+    _favoritesMap = favoritesForecasts;
     if (lastForecast != null) return right(lastForecast);
     return left(const HiveException.noDataFound());
+  }
+
+  void addFavoriteForecast(Forecast forecast) {
+    Box<Map> hiveDb = Hive.box<Map>(Constants.hiveFavoritesBoxKey);
+    Map? data = hiveDb.get(Constants.hiveFavoritesBoxKey);
+    if (data == null) data = Map<String, Forecast>();
+    Map<String, Forecast> favoritesForecasts = data.cast<String, Forecast>();
+    favoritesForecasts[forecast.name] = forecast;
+    hiveDb.put(Constants.hiveFavoritesBoxKey, favoritesForecasts);
+  }
+
+  void removeFavoriteForecast(Forecast forecast) {
+    Box<Map> hiveDb = Hive.box<Map>(Constants.hiveFavoritesBoxKey);
+    Map? data = hiveDb.get(Constants.hiveFavoritesBoxKey);
+    if (data == null) data = Map<String, Forecast>();
+    Map<String, Forecast> favoritesForecasts = data.cast<String, Forecast>();
+    favoritesForecasts.remove(forecast.name);
+    hiveDb.put(Constants.hiveFavoritesBoxKey, favoritesForecasts);
   }
 }

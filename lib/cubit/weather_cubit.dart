@@ -30,7 +30,22 @@ class WeatherCubit extends Cubit<WeatherState> {
       name: name,
       unit: units,
       validator: const DataChange.dataChange(),
+      isFavorite: false,
     ));
+  }
+
+  void changedPickedFavorite({
+    required Forecast forecast,
+  }) {
+    emit(state.copyWith(
+      name: forecast.name,
+      unit: forecast.units,
+      forecast: forecast,
+      validator: const DataChange.dataChange(),
+      isFavorite: true,
+    ));
+    _fetching.cancel();
+    startFetching(name: forecast.name, units: forecast.units);
   }
 
   Future<void> isForecastStoredLocally() async {
@@ -127,6 +142,18 @@ class WeatherCubit extends Cubit<WeatherState> {
       },
     );
   }
+
+  void addFavoriteForecast() {
+    emit(state.copyWith(isFavorite: true));
+    _weatherRepository.addFavoriteForecast(state.forecast!);
+  }
+
+  void removeFavoriteForecast() {
+    emit(state.copyWith(isFavorite: false));
+    _weatherRepository.removeFavoriteForecast(state.forecast!);
+  }
+
+  Map<String, Forecast> getFavoritesMap() => _weatherRepository.getFavoritesMap;
 
   void closeTimers() {
     if (_fetching.isActive) _fetching.cancel();

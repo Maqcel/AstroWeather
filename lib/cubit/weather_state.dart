@@ -9,6 +9,7 @@ class WeatherState with _$WeatherState {
     required AppExceptions validator,
     required bool isFetched,
     required String unit,
+    required bool isFavorite,
   }) = _WeatherState;
 
   const WeatherState._();
@@ -20,5 +21,6 @@ class WeatherState with _$WeatherState {
         isFetched: false,
         unit: 'metric',
         validator: ValueIsValid.valueIsValid(),
+        isFavorite: false,
       );
 }
