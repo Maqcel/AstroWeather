@@ -8,6 +8,7 @@ import '/cubit/weather_cubit.dart';
 import '/screens/main_screen/components/additional_info.dart';
 import '/screens/main_screen/components/clock_widget.dart';
 import '/screens/main_screen/components/fragment.dart';
+import '/screens/main_screen/components/future_forecasts.dart';
 import '/screens/main_screen/components/general_info.dart';
 import '/screens/main_screen/components/settings.dart';
 
@@ -94,21 +95,35 @@ class _MainScreenState extends State<MainScreen> {
                                 Fragment(
                                   child: AdditionalInfo(state: state),
                                 ),
+                                Fragment(
+                                  child: FutureForecasts(state: state),
+                                )
                               ],
                             );
                           }
-                          return Row(
+                          final PageController controller =
+                              PageController(initialPage: 0);
+                          return PageView(
+                            controller: controller,
+                            scrollDirection: Axis.vertical,
                             children: [
-                              Expanded(
-                                child: Fragment(
-                                  child: GeneralInfo(state: state),
-                                ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Fragment(
+                                      child: GeneralInfo(state: state),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Fragment(
+                                      child: AdditionalInfo(state: state),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Expanded(
-                                child: Fragment(
-                                  child: AdditionalInfo(state: state),
-                                ),
-                              ),
+                              Fragment(
+                                child: FutureForecasts(state: state),
+                              )
                             ],
                           );
                         },

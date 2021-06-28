@@ -20,6 +20,7 @@ class _$WeatherStateTearOff {
       {required String name,
       required bool isLoading,
       required Forecast? forecast,
+      required List<Forecast>? futureForecasts,
       required AppExceptions validator,
       required bool isFetched,
       required String unit,
@@ -28,6 +29,7 @@ class _$WeatherStateTearOff {
       name: name,
       isLoading: isLoading,
       forecast: forecast,
+      futureForecasts: futureForecasts,
       validator: validator,
       isFetched: isFetched,
       unit: unit,
@@ -44,6 +46,7 @@ mixin _$WeatherState {
   String get name => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   Forecast? get forecast => throw _privateConstructorUsedError;
+  List<Forecast>? get futureForecasts => throw _privateConstructorUsedError;
   AppExceptions get validator => throw _privateConstructorUsedError;
   bool get isFetched => throw _privateConstructorUsedError;
   String get unit => throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ abstract class $WeatherStateCopyWith<$Res> {
       {String name,
       bool isLoading,
       Forecast? forecast,
+      List<Forecast>? futureForecasts,
       AppExceptions validator,
       bool isFetched,
       String unit,
@@ -84,6 +88,7 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
     Object? name = freezed,
     Object? isLoading = freezed,
     Object? forecast = freezed,
+    Object? futureForecasts = freezed,
     Object? validator = freezed,
     Object? isFetched = freezed,
     Object? unit = freezed,
@@ -102,6 +107,10 @@ class _$WeatherStateCopyWithImpl<$Res> implements $WeatherStateCopyWith<$Res> {
           ? _value.forecast
           : forecast // ignore: cast_nullable_to_non_nullable
               as Forecast?,
+      futureForecasts: futureForecasts == freezed
+          ? _value.futureForecasts
+          : futureForecasts // ignore: cast_nullable_to_non_nullable
+              as List<Forecast>?,
       validator: validator == freezed
           ? _value.validator
           : validator // ignore: cast_nullable_to_non_nullable
@@ -144,6 +153,7 @@ abstract class _$WeatherStateCopyWith<$Res>
       {String name,
       bool isLoading,
       Forecast? forecast,
+      List<Forecast>? futureForecasts,
       AppExceptions validator,
       bool isFetched,
       String unit,
@@ -168,6 +178,7 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
     Object? name = freezed,
     Object? isLoading = freezed,
     Object? forecast = freezed,
+    Object? futureForecasts = freezed,
     Object? validator = freezed,
     Object? isFetched = freezed,
     Object? unit = freezed,
@@ -186,6 +197,10 @@ class __$WeatherStateCopyWithImpl<$Res> extends _$WeatherStateCopyWithImpl<$Res>
           ? _value.forecast
           : forecast // ignore: cast_nullable_to_non_nullable
               as Forecast?,
+      futureForecasts: futureForecasts == freezed
+          ? _value.futureForecasts
+          : futureForecasts // ignore: cast_nullable_to_non_nullable
+              as List<Forecast>?,
       validator: validator == freezed
           ? _value.validator
           : validator // ignore: cast_nullable_to_non_nullable
@@ -213,6 +228,7 @@ class _$_WeatherState extends _WeatherState {
       {required this.name,
       required this.isLoading,
       required this.forecast,
+      required this.futureForecasts,
       required this.validator,
       required this.isFetched,
       required this.unit,
@@ -226,6 +242,8 @@ class _$_WeatherState extends _WeatherState {
   @override
   final Forecast? forecast;
   @override
+  final List<Forecast>? futureForecasts;
+  @override
   final AppExceptions validator;
   @override
   final bool isFetched;
@@ -236,7 +254,7 @@ class _$_WeatherState extends _WeatherState {
 
   @override
   String toString() {
-    return 'WeatherState(name: $name, isLoading: $isLoading, forecast: $forecast, validator: $validator, isFetched: $isFetched, unit: $unit, isFavorite: $isFavorite)';
+    return 'WeatherState(name: $name, isLoading: $isLoading, forecast: $forecast, futureForecasts: $futureForecasts, validator: $validator, isFetched: $isFetched, unit: $unit, isFavorite: $isFavorite)';
   }
 
   @override
@@ -251,6 +269,9 @@ class _$_WeatherState extends _WeatherState {
             (identical(other.forecast, forecast) ||
                 const DeepCollectionEquality()
                     .equals(other.forecast, forecast)) &&
+            (identical(other.futureForecasts, futureForecasts) ||
+                const DeepCollectionEquality()
+                    .equals(other.futureForecasts, futureForecasts)) &&
             (identical(other.validator, validator) ||
                 const DeepCollectionEquality()
                     .equals(other.validator, validator)) &&
@@ -270,6 +291,7 @@ class _$_WeatherState extends _WeatherState {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(forecast) ^
+      const DeepCollectionEquality().hash(futureForecasts) ^
       const DeepCollectionEquality().hash(validator) ^
       const DeepCollectionEquality().hash(isFetched) ^
       const DeepCollectionEquality().hash(unit) ^
@@ -286,6 +308,7 @@ abstract class _WeatherState extends WeatherState {
       {required String name,
       required bool isLoading,
       required Forecast? forecast,
+      required List<Forecast>? futureForecasts,
       required AppExceptions validator,
       required bool isFetched,
       required String unit,
@@ -298,6 +321,8 @@ abstract class _WeatherState extends WeatherState {
   bool get isLoading => throw _privateConstructorUsedError;
   @override
   Forecast? get forecast => throw _privateConstructorUsedError;
+  @override
+  List<Forecast>? get futureForecasts => throw _privateConstructorUsedError;
   @override
   AppExceptions get validator => throw _privateConstructorUsedError;
   @override

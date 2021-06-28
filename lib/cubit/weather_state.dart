@@ -6,6 +6,7 @@ class WeatherState with _$WeatherState {
     required String name,
     required bool isLoading,
     required Forecast? forecast,
+    required List<Forecast>? futureForecasts,
     required AppExceptions validator,
     required bool isFetched,
     required String unit,
@@ -16,6 +17,7 @@ class WeatherState with _$WeatherState {
 
   factory WeatherState.init({required String name}) => WeatherState(
         forecast: null,
+        futureForecasts: null,
         isLoading: true,
         name: name,
         isFetched: false,

@@ -96,8 +96,9 @@ class WeatherCubit extends Cubit<WeatherState> {
         state.copyWith(validator: const InternetException.noConnection()),
       );
     }
+    fetchFutureForecasts(name: name, units: units);
     _fetching = Timer.periodic(
-      Duration(seconds: 6),
+      Duration(seconds: 7),
       (timer) async {
         final bool isConnected = await _checkConnection();
         if (!isConnected) {
@@ -154,6 +155,27 @@ class WeatherCubit extends Cubit<WeatherState> {
   }
 
   Map<String, Forecast> getFavoritesMap() => _weatherRepository.getFavoritesMap;
+
+  Future<void> fetchFutureForecasts({
+    required String name,
+    required String units,
+  }) async {
+    final result =
+        await _weatherRepository.requestFutureForecast(name: name, unit: units);
+    result.fold(
+      (fail) {
+        startFetching(name: state.name, units: state.unit);
+        emit(
+          state.copyWith(
+            validator: fail,
+          ),
+        );
+      },
+      (success) {
+        emit(state.copyWith(futureForecasts: success));
+      },
+    );
+  }
 
   void closeTimers() {
     if (_fetching.isActive) _fetching.cancel();
